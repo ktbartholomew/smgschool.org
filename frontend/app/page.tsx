@@ -35,10 +35,10 @@ export default async function Home() {
         <div className="py-32 px-16">
           <div className="grid grid-cols-2 gap-16">
             <div>
-              <h2 className="font-black trackin-tight text-8xl text-balance mb-8">
+              <h2 className="font-black tracking-tight text-8xl text-balance mb-8">
                 70 Years of Excellence
               </h2>
-              <p className="text-2xl mb-4">
+              <p className="text-2xl mb-8">
                 Saint Maria Goretti Catholic School is the leader in Catholic
                 education in D/FW. Since being founded by the sisters of St.
                 Mary of Namur in 1954, SMG has been at the center of Catholic
@@ -55,10 +55,37 @@ export default async function Home() {
             </div>
           </div>
         </div>
-        <pre>
-          <code>{JSON.stringify(page, null, 2)}</code>
-        </pre>
+        <div className="h-[80vh] relative">
+          <div className="overflow-hidden">
+            <img
+              className="absolute block h-full w-full object-cover object-center -z-20"
+              src="/IMG_0820.jpg"
+              alt="middle school class"
+            />
+            <div className="absolute h-full w-full bg-brand-primary-700/80 mix-blend-normal"></div>
+          </div>
+          <div className="relative pt-[20vh] px-16 text-center">
+            <h2 className="font-black text-center text-white tracking-tight text-8xl text-balance drop-shadow-lg-strong mb-8 z-20">
+              Education that defies labels
+            </h2>
+            <p className="text-2xl mb-8 text-white text-center drop-shadow-lg-strong mx-auto max-w-prose">
+              We’re not just a private school. We’re not just classical
+              education. We’re not just Catholic education. Saint Maria Goretti
+              is all of the above; a combination of faith, family, and community
+              that you won't find anywhere else.
+            </p>
+            <div>
+              <Link
+                className="inline-block px-8 py-4 rounded-md text-2xl bg-white text-black"
+                href="/academics"
+              >
+                Learn more about our academics
+              </Link>
+            </div>
+          </div>
+        </div>
       </main>
+      <footer className="bg-slate-900 py-32 px-16 text-white"></footer>
     </>
   );
 }

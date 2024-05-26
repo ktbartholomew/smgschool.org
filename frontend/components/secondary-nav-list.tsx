@@ -1,8 +1,10 @@
 "use client";
 
 import {
+  Children,
   Context,
   Dispatch,
+  ReactNode,
   SetStateAction,
   createContext,
   useContext,
@@ -11,7 +13,7 @@ import {
   useState,
 } from "react";
 
-let SecondaryNavContext: Context<{
+export let SecondaryNavContext: Context<{
   active: string;
   setActive: Dispatch<SetStateAction<string>>;
 }>;
@@ -38,7 +40,13 @@ export function SecondaryNavController({ children }: { children: any }) {
   );
 }
 
-export function SecondaryNavList({ navLinkId }: { navLinkId: string }) {
+export function SecondaryNavList({
+  children,
+  navLinkId,
+}: {
+  children: ReactNode;
+  navLinkId: string;
+}) {
   const navContext = useContext(SecondaryNavContext);
   const [hidden, setHidden] = useState(navContext.active !== navLinkId);
   const [left, setLeft] = useState(0);
@@ -81,31 +89,7 @@ export function SecondaryNavList({ navLinkId }: { navLinkId: string }) {
       }`}
       style={{ right: `${left}px` }}
     >
-      <ul>
-        <li>
-          <a
-            href="/about/faculty-and-staff"
-            className="block p-4 px-6 hover:underline"
-          >
-            Faculty & Staff
-          </a>
-        </li>
-        <li>
-          <a href="/our-vision" className="block p-4 px-6 hover:underline">
-            Mission & Vision
-          </a>
-        </li>
-        <li>
-          <a href="/employment" className="block p-4 px-6 hover:underline">
-            Employment
-          </a>
-        </li>
-        <li>
-          <a href="/contact-us" className="block p-4 px-6 hover:underline">
-            Contact Us
-          </a>
-        </li>
-      </ul>
+      {children}
     </nav>
   );
 }
