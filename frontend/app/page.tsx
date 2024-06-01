@@ -73,7 +73,7 @@ export default async function Home() {
               We’re not just a private school. We’re not just classical
               education. We’re not just Catholic education. Saint Maria Goretti
               is all of the above; a combination of faith, family, and community
-              that you won't find anywhere else.
+              that you won’t find anywhere else.
             </p>
             <div>
               <Link
