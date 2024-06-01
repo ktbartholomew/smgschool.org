@@ -1,6 +1,7 @@
 "use server";
 
-import { TopNavHeader } from "@/components/header";
+import SiteFooter from "@/components/site-footer";
+import { TopNavHeader } from "@/components/site-header";
 import { client } from "@/sanity";
 import Link from "next/link";
 
@@ -62,7 +63,7 @@ export default async function Home() {
               src="/IMG_0820.jpg"
               alt="middle school class"
             />
-            <div className="absolute h-full w-full bg-brand-primary-700/80 mix-blend-normal"></div>
+            <div className="absolute h-full w-full bg-brand-primary-700/80 mix-blend-multiply"></div>
           </div>
           <div className="relative pt-[20vh] px-16 text-center">
             <h2 className="font-black text-center text-white tracking-tight text-8xl text-balance drop-shadow-lg-strong mb-8 z-20">
@@ -85,7 +86,7 @@ export default async function Home() {
           </div>
         </div>
       </main>
-      <footer className="bg-slate-900 py-32 px-16 text-white"></footer>
+      <SiteFooter />
     </>
   );
 }

@@ -1,0 +1,23 @@
+.site-footer {
+  @apply bg-slate-900;
+  @apply text-white;
+}
+
+.site-footer a {
+  @apply underline;
+  @apply text-sky-200;
+}
+
+.site-footer .footer-column h3 {
+  @apply text-2xl;
+  @apply font-bold;
+  @apply mb-2;
+}
+
+.site-footer .footer-column ul li + li {
+  @apply mt-2;
+}
+
+.site-footer .contact-card a {
+  @apply text-sky-600;
+}

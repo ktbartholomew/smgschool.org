@@ -1,7 +1,8 @@
 "use server";
 
 import { PageProps } from "@/.next/types/app/[...path]/page";
-import { TopNavHeader } from "@/components/header";
+import SiteFooter from "@/components/site-footer";
+import { TopNavHeader } from "@/components/site-header";
 import { client } from "@/sanity";
 import { notFound } from "next/navigation";
 
@@ -24,6 +25,7 @@ export default async function DynamicPage(props: PageProps) {
           <code>{JSON.stringify(page, null, 2)}</code>
         </pre>
       </main>
+      <SiteFooter />
     </>
   );
 }

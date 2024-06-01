@@ -1,6 +1,7 @@
 "use server";
 
-import { TopNavHeader } from "@/components/header";
+import SiteFooter from "@/components/site-footer";
+import { TopNavHeader } from "@/components/site-header";
 
 export default async function Home() {
   return (
@@ -14,6 +15,7 @@ export default async function Home() {
           <p className="text-xl">Sorry.</p>
         </div>
       </main>
+      <SiteFooter />
     </>
   );
 }
