@@ -25,33 +25,33 @@ body {
   }
 }
 
-p {
+.prose p {
   @apply text-lg;
-  @apply mb-6;
+  @apply my-5;
 }
 
-h1 {
+.prose h1 {
   @apply text-8xl;
   @apply tracking-tight;
   @apply font-black;
-  @apply mb-8;
+  @apply my-16;
 }
 
-h2 {
+.prose h2 {
   @apply text-5xl;
   @apply tracking-tight;
   @apply font-black;
-  @apply mb-4;
+  @apply my-4;
 }
 
-h3 {
+.prose h3 {
   @apply text-4xl;
   @apply tracking-tight;
   @apply font-bold;
-  @apply mb-4;
+  @apply my-4;
 }
 
-h4 {
+.prose h4 {
   @apply text-2xl;
   @apply tracking-tight;
   @apply font-semibold;
@@ -61,12 +61,12 @@ h4 {
   @apply border-b-brand-primary-600;
 }
 
-h5 {
+.prose h5 {
   @apply font-bold;
   @apply tracking-tight;
 }
 
-h6 {
+.prose h6 {
   @apply font-bold;
   @apply tracking-tight;
 }
@@ -78,17 +78,46 @@ p + h4 {
   @apply mt-8;
 }
 
-blockquote {
+.prose blockquote {
   @apply text-lg;
   @apply pl-4;
   @apply py-4;
-  @apply mb-6;
+  @apply my-5;
   @apply border-l-8;
   @apply border-l-slate-300;
   @apply bg-slate-100;
 }
 
-a {
+.prose a {
   @apply text-sky-500;
   @apply underline;
+}
+
+.prose strong,
+.prose b {
+  @apply font-bold;
+}
+
+.prose em,
+.prose i {
+  @apply italic;
+}
+
+.prose ol,
+.prose ul {
+  @apply ps-5;
+  @apply my-5;
+}
+
+.prose ol li,
+.prose ul li {
+  @apply my-2;
+}
+
+.prose ol {
+  list-style-type: decimal;
+}
+
+.prose ul {
+  list-style-type: disc;
 }

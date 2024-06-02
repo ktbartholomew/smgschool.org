@@ -1,32 +1,33 @@
-import { defineType, defineField, defineArrayMember } from 'sanity'
+import {defineType, defineField, defineArrayMember} from 'sanity'
 
 export const textBlock = defineType({
-  type: "object",
-  name: "textBlock",
+  type: 'object',
+  name: 'textBlock',
   fields: [
     defineField({
-      type: "string",
-      name: "title",
+      type: 'string',
+      name: 'title',
+      description:
+        'This title isn’t displayed anywhere; it’s only used to help you identify this text block.',
     }),
     defineField({
-      type: "array",
-      name: "content",
+      type: 'array',
+      name: 'content',
       of: [
         defineArrayMember({
-          type: "block",
+          type: 'block',
         }),
         defineArrayMember({
-          type: "image",
+          type: 'image',
           fields: [
             {
-              type: "string",
-              name: "caption",
+              type: 'string',
+              name: 'caption',
             },
           ],
-          options: { hotspot: true },
+          options: {hotspot: true},
         }),
       ],
     }),
   ],
-});
-
+})

@@ -6,9 +6,9 @@ import "./site-footer.css";
 
 export default async function SiteFooter() {
   return (
-    <footer className="site-footer p-16">
-      <div className="flex gap-8">
-        <div className="contact-card flex-shrink flex-1/4 bg-white text-black p-8 rounded-md">
+    <footer className="site-footer p-4 md:p-16">
+      <div className="flex flex-wrap gap-8">
+        <div className="contact-card md:flex-shrink flex-1 md:flex-1/4 bg-white text-black p-8 rounded-md">
           <div className="flex justify-center mb-8">
             <SmgSchoolLogo />
           </div>
@@ -38,7 +38,7 @@ export default async function SiteFooter() {
             </p>
           </address>
         </div>
-        <div className="grid flex-grow grid-cols-4 gap-8 gap-y-16">
+        <div className="grid flex-grow lg:grid-cols-4 gap-8 gap-y-16">
           <div className="footer-column">
             <h3>About</h3>
             <ul>

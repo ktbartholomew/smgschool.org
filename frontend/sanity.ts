@@ -6,4 +6,10 @@ export const client = createClient({
   apiVersion: "v2022-03-07",
   dataset: "production", // or the name you chose in step 1
   useCdn: true, // `false` if you want to ensure fresh data
+  fetch: {
+    next: {
+      // Cache content requests for up to 10 minutes
+      revalidate: 600,
+    },
+  },
 });
