@@ -8,7 +8,7 @@ export default async function SiteFooter() {
   return (
     <footer className="site-footer p-4 md:p-16">
       <div className="flex flex-wrap gap-8">
-        <div className="contact-card md:flex-shrink flex-1 md:flex-1/4 bg-white text-black p-8 rounded-md">
+        <div className="contact-card flex-grow md:flex-grow-0 md:flex-shrink basis-1 md:basis-1/4 bg-white text-black p-8 rounded-md">
           <div className="flex justify-center mb-8">
             <SmgSchoolLogo />
           </div>

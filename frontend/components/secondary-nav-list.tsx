@@ -77,7 +77,7 @@ export function SecondaryNavList({
     return () => {
       link.removeEventListener("mouseenter", handler);
       link.removeEventListener("focus", handler);
-      link.removeEventListener("blue", unhandler);
+      link.removeEventListener("blur", unhandler);
     };
   }, [navLinkId]);
 
