@@ -4,7 +4,7 @@
 
 :root {
   --foreground-rgb: 0, 0, 0;
-  --background-rgb: 255,255,255;
+  --background-rgb: 255, 255, 255;
 }
 
 /* @media (prefers-color-scheme: dark) {
@@ -16,11 +16,79 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background:rgb(var(--background-rgb));
+  background: rgb(var(--background-rgb));
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+p {
+  @apply text-lg;
+  @apply mb-6;
+}
+
+h1 {
+  @apply text-8xl;
+  @apply tracking-tight;
+  @apply font-black;
+  @apply mb-8;
+}
+
+h2 {
+  @apply text-5xl;
+  @apply tracking-tight;
+  @apply font-black;
+  @apply mb-4;
+}
+
+h3 {
+  @apply text-4xl;
+  @apply tracking-tight;
+  @apply font-bold;
+  @apply mb-4;
+}
+
+h4 {
+  @apply text-2xl;
+  @apply tracking-tight;
+  @apply font-semibold;
+  @apply mb-4;
+  @apply pb-2;
+  @apply border-b-4;
+  @apply border-b-brand-primary-600;
+}
+
+h5 {
+  @apply font-bold;
+  @apply tracking-tight;
+}
+
+h6 {
+  @apply font-bold;
+  @apply tracking-tight;
+}
+
+p + h1,
+p + h2,
+p + h3,
+p + h4 {
+  @apply mt-8;
+}
+
+blockquote {
+  @apply text-lg;
+  @apply pl-4;
+  @apply py-4;
+  @apply mb-6;
+  @apply border-l-8;
+  @apply border-l-slate-300;
+  @apply bg-slate-100;
+}
+
+a {
+  @apply text-sky-500;
+  @apply underline;
 }

@@ -5,7 +5,7 @@ import { SecondaryNavContext } from "./secondary-nav-list";
 import Link from "next/link";
 
 const mainLinkClass =
-  "flex relative items-center px-6 transition-colors h-full text-white hover:bg-brand-primary-600";
+  "flex relative items-center px-6 transition-colors h-full text-white no-underline hover:bg-brand-primary-600";
 
 export type TNavLink = {
   _id: string;

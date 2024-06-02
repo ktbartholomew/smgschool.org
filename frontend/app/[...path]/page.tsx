@@ -4,12 +4,21 @@ import { PageProps } from "@/.next/types/app/[...path]/page";
 import SiteFooter from "@/components/site-footer";
 import { TopNavHeader } from "@/components/site-header";
 import { client } from "@/sanity";
+import { PortableText } from "@portabletext/react";
 import { notFound } from "next/navigation";
 
 export default async function DynamicPage(props: PageProps) {
-  const pages = await client.fetch(
-    `*[_type == 'page' && slug.current == '/${props.params.path.join("/")}']`
-  );
+  const pages = await client.fetch<
+    {
+      _id: string;
+      title: string;
+      sections: {
+        title?: string;
+        _key: string;
+        content: any[];
+      }[];
+    }[]
+  >(`*[_type == 'page' && slug.current == '/${props.params.path.join("/")}']`);
 
   if (pages.length === 0) {
     return notFound();
@@ -21,9 +30,11 @@ export default async function DynamicPage(props: PageProps) {
     <>
       <TopNavHeader path={props.params.path} />
       <main>
-        <pre>
-          <code>{JSON.stringify(page, null, 2)}</code>
-        </pre>
+        {page.sections.map((s) => (
+          <section key={s._key} className="p-8 text-lg max-w-prose mx-auto">
+            <PortableText value={s.content} />
+          </section>
+        ))}
       </main>
       <SiteFooter />
     </>

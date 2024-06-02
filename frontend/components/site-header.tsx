@@ -11,7 +11,7 @@ export async function TopNavHeader({ path }: { path?: string }) {
   const urlPath = `/${path ?? ""}`;
 
   const eyebrowLinkClass =
-    "px-6 py-2 block hover:bg-brand-primary transition-colors";
+    "px-6 py-2 block text-white no-underline hover:bg-brand-primary transition-colors";
 
   const eyebrowNavLinks = await client.fetch<
     {
@@ -61,7 +61,9 @@ export async function TopNavHeader({ path }: { path?: string }) {
               <a href="/">
                 <SmgSchoolLogo inverse size={100} />
               </a>
-              <h2 className="text-2xl">Saint Maria Goretti Catholic School</h2>
+              <h2 className="text-2xl font-semibold m-0">
+                Saint Maria Goretti Catholic School
+              </h2>
             </div>
             <ul className="flex items-stretch text-lg">
               {mainNavLinks.map((m) => {
@@ -83,7 +85,7 @@ export async function TopNavHeader({ path }: { path?: string }) {
                   return (
                     <li key={link._id}>
                       <Link
-                        className="block p-4 px-6 hover:underline"
+                        className="block p-4 px-6 text-white no-underline hover:underline"
                         href={href}
                       >
                         {link.title}
