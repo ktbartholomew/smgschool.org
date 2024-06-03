@@ -32,6 +32,12 @@ export default async function DynamicPage(props: PageProps) {
             image?: SanityImageSource & SanityImageObject;
           }
       )[];
+      sidebarSections?: {
+        _type: "textBlock";
+        _key: string;
+        title?: string;
+        content: PortableTextBlock[];
+      }[];
     }[]
   >(`*[_type == 'page' && slug.current == '/${props.params.path.join("/")}']`);
 
@@ -40,22 +46,55 @@ export default async function DynamicPage(props: PageProps) {
   }
 
   const page = pages[0];
+  let heroHeader;
+
+  // If the first section of the page is a hero block, treat it as a full-width
+  // page title by removing it from the main sections array and rendering it
+  // first. This allows us to render a sidebar alongside the main content, but
+  // below the page title.
+  if (page.sections?.[0]._type === "heroBlock") {
+    heroHeader = page.sections[0];
+    page.sections.shift();
+  }
 
   return (
     <>
       <TopNavHeader path={props.params.path} />
-      <main>
-        {page.sections?.map((s) => {
-          switch (s._type) {
-            case "heroBlock":
-              return <HeroBlock key={s._key} section={s} />;
-            case "textBlock":
-              return <TextBlock key={s._key} section={s} />;
-            default:
-              return null;
-          }
-        })}
-      </main>
+      {heroHeader && (
+        <header>
+          <HeroBlock section={heroHeader} />
+        </header>
+      )}
+      <div className="flex flex-nowrap justify-center">
+        <main className="flex-grow-0">
+          {page.sections?.map((s) => {
+            switch (s._type) {
+              case "heroBlock":
+                return <HeroBlock key={s._key} section={s} />;
+              case "textBlock":
+                return <TextBlock key={s._key} section={s} />;
+              default:
+                return null;
+            }
+          })}
+        </main>
+        {page.sidebarSections?.length ? (
+          <aside className="basis-1/4 flex-shrink-0 py-8">
+            {page.sidebarSections.map((s) => {
+              return (
+                <section
+                  key={s._key}
+                  className="border border-slate-300 shadow-md rounded-md p-8 mb-8"
+                >
+                  <div className="prose">
+                    <PortableText value={s.content} />
+                  </div>
+                </section>
+              );
+            })}
+          </aside>
+        ) : null}
+      </div>
       <SiteFooter />
     </>
   );

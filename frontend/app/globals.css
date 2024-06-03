@@ -23,101 +23,108 @@ body {
   .text-balance {
     text-wrap: balance;
   }
-}
 
-.prose p {
-  @apply text-lg;
-  @apply my-5;
-}
+  .bg-tartan {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+      url("/smgschool-tartan.svg");
+    background-repeat: repeat;
+    background-size: 256px;
+    background-position: 50% 50%;
+  }
 
-.prose h1 {
-  @apply text-8xl;
-  @apply tracking-tight;
-  @apply font-black;
-  @apply my-16;
-}
+  .prose p {
+    @apply my-5;
+  }
 
-.prose h2 {
-  @apply text-5xl;
-  @apply tracking-tight;
-  @apply font-black;
-  @apply my-4;
-}
+  .prose h1 {
+    @apply text-8xl;
+    @apply tracking-tight;
+    @apply font-black;
+    @apply my-16;
+  }
 
-.prose h3 {
-  @apply text-4xl;
-  @apply tracking-tight;
-  @apply font-bold;
-  @apply my-4;
-}
+  .prose h2 {
+    @apply text-5xl;
+    @apply tracking-tight;
+    @apply font-black;
+    @apply my-4;
+  }
 
-.prose h4 {
-  @apply text-2xl;
-  @apply tracking-tight;
-  @apply font-semibold;
-  @apply mb-4;
-  @apply pb-2;
-  @apply border-b-4;
-  @apply border-b-brand-primary-600;
-}
+  .prose h3 {
+    @apply text-4xl;
+    @apply tracking-tight;
+    @apply font-bold;
+    @apply my-4;
+  }
 
-.prose h5 {
-  @apply font-bold;
-  @apply tracking-tight;
-}
+  .prose h4 {
+    @apply text-2xl;
+    @apply tracking-tight;
+    @apply font-semibold;
+    @apply mb-4;
+    @apply pb-2;
+    @apply border-b-4;
+    @apply border-b-brand-primary-600;
+  }
 
-.prose h6 {
-  @apply font-bold;
-  @apply tracking-tight;
-}
+  .prose h5 {
+    @apply font-bold;
+    @apply tracking-tight;
+  }
 
-p + h1,
-p + h2,
-p + h3,
-p + h4 {
-  @apply mt-8;
-}
+  .prose h6 {
+    @apply font-bold;
+    @apply tracking-tight;
+  }
 
-.prose blockquote {
-  @apply text-lg;
-  @apply pl-4;
-  @apply py-4;
-  @apply my-5;
-  @apply border-l-8;
-  @apply border-l-slate-300;
-  @apply bg-slate-100;
-}
+  p + h1,
+  p + h2,
+  p + h3,
+  p + h4 {
+    @apply mt-8;
+  }
 
-.prose a {
-  @apply text-sky-500;
-  @apply underline;
-}
+  .prose blockquote {
+    @apply text-lg;
+    @apply pl-4;
+    @apply py-4;
+    @apply my-5;
+    @apply border-l-8;
+    @apply border-l-slate-300;
+    @apply bg-slate-100;
+  }
 
-.prose strong,
-.prose b {
-  @apply font-bold;
-}
+  .prose a {
+    @apply text-sky-500;
+    @apply underline;
+  }
 
-.prose em,
-.prose i {
-  @apply italic;
-}
+  .prose strong,
+  .prose b {
+    @apply font-bold;
+  }
 
-.prose ol,
-.prose ul {
-  @apply ps-5;
-  @apply my-5;
-}
+  .prose em,
+  .prose i {
+    @apply italic;
+  }
 
-.prose ol li,
-.prose ul li {
-  @apply my-2;
-}
+  .prose ol,
+  .prose ul {
+    @apply ps-5;
+    @apply my-5;
+  }
 
-.prose ol {
-  list-style-type: decimal;
-}
+  .prose ol li,
+  .prose ul li {
+    @apply my-2;
+  }
 
-.prose ul {
-  list-style-type: disc;
+  .prose ol {
+    list-style-type: decimal;
+  }
+
+  .prose ul {
+    list-style-type: disc;
+  }
 }

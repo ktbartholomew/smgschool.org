@@ -60,7 +60,7 @@ export default async function Home() {
           <div className="overflow-hidden">
             <img
               className="absolute block h-full w-full object-cover object-center -z-20"
-              src="/IMG_0820.jpg"
+              src="https://cdn.sanity.io/images/e6jjrj2e/production/d2f4c9e278ccd580284e141b325f4bdc417123fa-3000x2000.jpg?w=1800&auto=format"
               alt="middle school class"
             />
             <div className="absolute h-full w-full bg-brand-primary-700/80 mix-blend-multiply"></div>

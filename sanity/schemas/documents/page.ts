@@ -28,6 +28,8 @@ export const page = defineType({
       type: 'array',
       name: 'sections',
       title: 'Page sections',
+      description:
+        'Page sections comprise the main content of the page. Each section stands apart from its siblings; use them to control the vertical rhythm of a long page.',
       of: [
         defineArrayMember({
           type: 'heroBlock',
@@ -40,6 +42,21 @@ export const page = defineType({
         }),
         defineArrayMember({
           type: 'imageCarousel',
+        }),
+      ],
+    }),
+    defineField({
+      type: 'array',
+      name: 'sidebarSections',
+      title: 'Sidebar sections',
+      description:
+        'Sidebar sections appear next to the main content of the page. Use them for supporting resources and information, or leave them out if the main content speaks for itself.',
+      of: [
+        defineArrayMember({
+          type: 'textBlock',
+        }),
+        defineArrayMember({
+          type: 'ctaBlock',
         }),
       ],
     }),
