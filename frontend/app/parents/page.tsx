@@ -5,9 +5,15 @@ import { TopNavHeader } from "@/components/site-header";
 import { client } from "@/sanity";
 
 export default async function ParentResourcesPage() {
-  const volunteerNeeds = await client.fetch(
-    `*[_type == 'volunteerNeed' && date > '2024-06-04' ] | order(date asc)`
-  );
+  const volunteerNeeds = await client.fetch<
+    {
+      _id: string;
+      title: string;
+      date: string;
+      shortDescription?: string;
+      signupUrl: string;
+    }[]
+  >(`*[_type == 'volunteerNeed' && date > '2024-06-04' ] | order(date asc)`);
 
   return (
     <>
@@ -93,7 +99,9 @@ export default async function ParentResourcesPage() {
                       <strong>{v.title}</strong>:{" "}
                       {new Date(v.date).toLocaleDateString()}
                     </div>
-                    <div className="text-sm mb-2">{v.shortDescription}</div>
+                    {v.shortDescription && (
+                      <div className="text-sm mb-2">{v.shortDescription}</div>
+                    )}
                     <div>
                       <a href={v.signupUrl} target="_blank">
                         <button className="text-sm bg-sky-500 hover:bg-sky-600 text-white transition-colors py-1 px-4 rounded-md">
