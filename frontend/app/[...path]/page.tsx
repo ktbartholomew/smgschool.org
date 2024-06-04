@@ -65,8 +65,8 @@ export default async function DynamicPage(props: PageProps) {
           <HeroBlock section={heroHeader} />
         </header>
       )}
-      <div className="flex flex-nowrap justify-center">
-        <main className="flex-grow-0">
+      <div className="flex flex-wrap justify-center">
+        <main className="basis-full md:basis-auto flex-grow-0">
           {page.sections?.map((s) => {
             switch (s._type) {
               case "heroBlock":
@@ -79,7 +79,7 @@ export default async function DynamicPage(props: PageProps) {
           })}
         </main>
         {page.sidebarSections?.length ? (
-          <aside className="basis-1/4 flex-shrink-0 py-8">
+          <aside className="basis-full md:basis-1/4 flex-shrink-0 px-4 py-8 md:px-0">
             {page.sidebarSections.map((s) => {
               return (
                 <section

@@ -56,7 +56,7 @@ export default async function HeroBlock(props: {
         className={`absolute h-full w-full ${colorOverlayClass} mix-blend-multiply`}
       ></div>
       <div className="absolute h-full w-full flex items-center justify-center">
-        <h1 className="font-black text-center text-white tracking-tight text-8xl text-balance drop-shadow-lg-strong mb-8 z-20">
+        <h1 className="font-black text-center text-white tracking-tight text-5xl md:text-8xl text-balance drop-shadow-lg-strong mb-8 z-20">
           {props.section.title}
         </h1>
       </div>

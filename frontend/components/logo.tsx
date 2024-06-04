@@ -1,4 +1,4 @@
-export function SmgSchoolLogo({ size = 180, inverse = false }) {
+export function SmgSchoolLogo({ size = 180, inverse = false, className = "" }) {
   const fillClass = inverse ? "fill-white" : "fill-brand-primary";
   return (
     <svg
@@ -7,7 +7,7 @@ export function SmgSchoolLogo({ size = 180, inverse = false }) {
       xmlns="http://www.w3.org/2000/svg"
       version="1.1"
       viewBox="0 0 216 216"
-      className={fillClass}
+      className={[className, fillClass].join(" ")}
       style={{ width: `${size}px`, height: `${size}px` }}
     >
       <g>

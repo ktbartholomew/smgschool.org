@@ -15,7 +15,6 @@ export function StickyLogo() {
         if (stickyStyle.position !== "sticky") {
           setStickyStyle({
             position: "sticky",
-            display: "flex",
             top: "-160px",
             transition: "top 0.2s ease-in-out",
           });
@@ -23,7 +22,6 @@ export function StickyLogo() {
           setTimeout(() => {
             setStickyStyle({
               position: "sticky",
-              display: "flex",
               top: "0px",
               transition: "top 0.2s ease-in-out",
             });
@@ -48,7 +46,10 @@ export function StickyLogo() {
   }, [stickyStyle]);
 
   return (
-    <div className="absolute top-0 ml-16 z-30 flex" style={stickyStyle}>
+    <div
+      className="hidden md:flex absolute top-0 ml-16 z-30"
+      style={stickyStyle}
+    >
       <a href="#" onClick={() => window.scrollTo(0, 0)}>
         <div className=" bg-brand-primary p-2 shadow-md">
           <SmgSchoolLogo inverse size={100} />

@@ -28,7 +28,7 @@ export default async function Home() {
             </div>
           </div>
           <div className="caption z-10 flex items-center justify-center absolute top-0 w-full h-full">
-            <div className="text-center text-8xl tracking-tight font-black text-white text-balance drop-shadow-lg-strong">
+            <div className="text-center text-3xl md:text-8xl tracking-tight font-black text-white text-balance drop-shadow-lg-strong">
               Teaching Tomorrow’s Faithful Leaders
             </div>
           </div>
@@ -36,7 +36,7 @@ export default async function Home() {
         <div className="py-32 px-16">
           <div className="grid grid-cols-2 gap-16">
             <div>
-              <h2 className="font-black tracking-tight text-8xl text-balance mb-8">
+              <h2 className="font-black tracking-tight text-3xl md:text-8xl text-balance mb-8">
                 70 Years of Excellence
               </h2>
               <p className="text-2xl mb-8">
@@ -66,7 +66,7 @@ export default async function Home() {
             <div className="absolute h-full w-full bg-brand-primary-700/80 mix-blend-multiply"></div>
           </div>
           <div className="relative pt-[20vh] px-16 text-center">
-            <h2 className="font-black text-center text-white tracking-tight text-8xl text-balance drop-shadow-lg-strong mb-8 z-20">
+            <h2 className="font-black text-center text-white tracking-tight text-3xl md:text-8xl text-balance drop-shadow-lg-strong mb-8 z-20">
               Education that defies labels
             </h2>
             <p className="text-2xl mb-8 text-white text-center drop-shadow-lg-strong mx-auto max-w-prose">

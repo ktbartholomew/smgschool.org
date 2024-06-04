@@ -37,21 +37,24 @@ body {
   }
 
   .prose h1 {
-    @apply text-8xl;
+    @apply text-5xl;
+    @apply md:text-8xl;
     @apply tracking-tight;
     @apply font-black;
     @apply my-16;
   }
 
   .prose h2 {
-    @apply text-5xl;
+    @apply text-4xl;
+    @apply md:text-5xl;
     @apply tracking-tight;
     @apply font-black;
     @apply my-4;
   }
 
   .prose h3 {
-    @apply text-4xl;
+    @apply text-3xl;
+    @apply md:text-4xl;
     @apply tracking-tight;
     @apply font-bold;
     @apply my-4;
