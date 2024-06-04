@@ -1,6 +1,7 @@
 "use server";
 
 import { PageProps } from "@/.next/types/app/[...path]/page";
+import FormEmbedBlock from "@/components/blocks/form-embed-block";
 import HeroBlock from "@/components/blocks/hero-block";
 import OneCauseDonationFormBlock from "@/components/blocks/onecause-donation-form";
 import TextBlock from "@/components/blocks/text-block";
@@ -37,6 +38,12 @@ export default async function DynamicPage(props: PageProps) {
             _key: string;
             title?: string;
             challengeUrl: string;
+          }
+        | {
+            _type: "formEmbedBlock";
+            _key: string;
+            title?: string;
+            url: string;
           }
       )[];
       sidebarSections?: {
@@ -88,6 +95,8 @@ export default async function DynamicPage(props: PageProps) {
                 return <TextBlock key={s._key} section={s} />;
               case "donationBlock":
                 return <OneCauseDonationFormBlock key={s._key} section={s} />;
+              case "formEmbedBlock":
+                return <FormEmbedBlock key={s._key} section={s} />;
               default:
                 return null;
             }
