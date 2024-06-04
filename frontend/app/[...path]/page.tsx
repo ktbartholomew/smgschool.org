@@ -2,6 +2,7 @@
 
 import { PageProps } from "@/.next/types/app/[...path]/page";
 import HeroBlock from "@/components/blocks/hero-block";
+import OneCauseDonationFormBlock from "@/components/blocks/onecause-donation-form";
 import TextBlock from "@/components/blocks/text-block";
 import SiteFooter from "@/components/site-footer";
 import { TopNavHeader } from "@/components/site-header";
@@ -30,6 +31,12 @@ export default async function DynamicPage(props: PageProps) {
             _key: string;
             title?: string;
             image?: SanityImageSource & SanityImageObject;
+          }
+        | {
+            _type: "donationBlock";
+            _key: string;
+            title?: string;
+            challengeUrl: string;
           }
       )[];
       sidebarSections?: {
@@ -66,13 +73,21 @@ export default async function DynamicPage(props: PageProps) {
         </header>
       )}
       <div className="flex flex-wrap justify-center">
-        <main className="basis-full md:basis-auto flex-grow-0">
+        <main
+          className={
+            page.sidebarSections?.length
+              ? "basis-full md:basis-3/4"
+              : "basis-full"
+          }
+        >
           {page.sections?.map((s) => {
             switch (s._type) {
               case "heroBlock":
                 return <HeroBlock key={s._key} section={s} />;
               case "textBlock":
                 return <TextBlock key={s._key} section={s} />;
+              case "donationBlock":
+                return <OneCauseDonationFormBlock key={s._key} section={s} />;
               default:
                 return null;
             }

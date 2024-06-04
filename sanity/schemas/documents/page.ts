@@ -38,6 +38,9 @@ export const page = defineType({
           type: 'textBlock',
         }),
         defineArrayMember({
+          type: 'donationBlock',
+        }),
+        defineArrayMember({
           type: 'ctaBlock',
         }),
         defineArrayMember({

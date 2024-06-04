@@ -8,11 +8,9 @@ export default async function Home() {
     <>
       <TopNavHeader />
       <main className="">
-        <div className="text-center py-32">
-          <h2 className="text-6xl font-black tracking-tight mb-4">
-            Page Not Found
-          </h2>
-          <p className="text-xl">Sorry.</p>
+        <div className="text-center py-32 prose text-lg">
+          <h2>Page Not Found</h2>
+          <p>Sorry.</p>
         </div>
       </main>
       <SiteFooter />

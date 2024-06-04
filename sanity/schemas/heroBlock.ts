@@ -3,6 +3,7 @@ import {defineType, defineField, defineArrayMember} from 'sanity'
 export const heroBlock = defineType({
   type: 'object',
   name: 'heroBlock',
+  description: 'A very large header with a background image',
   fields: [
     defineField({
       type: 'string',
@@ -15,6 +16,8 @@ export const heroBlock = defineType({
     defineField({
       type: 'image',
       name: 'image',
+      description:
+        "A background image which will fill the hero section. If you don't specify an image, the SMG plaid pattern will be used instead.",
       options: {hotspot: true},
     }),
     defineField({

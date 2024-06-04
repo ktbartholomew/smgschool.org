@@ -1,3 +1,5 @@
+"use server";
+
 import { client } from "@/sanity";
 import imageUrl from "@sanity/image-url";
 import {
@@ -42,11 +44,18 @@ export default async function HeroBlock(props: {
   return (
     <section className="relative" style={{ height: "50vh" }}>
       <div
-        className="absolute h-full w-full bg-cover"
+        className={
+          props.section.image
+            ? "absolute h-full w-full bg-cover"
+            : "absolute h-full w-full"
+        }
         style={{
-          backgroundImage: props.section.image
+          backgroundImage: backgroundImageUrl
             ? `url(${backgroundImageUrl})`
-            : "",
+            : undefined,
+          background: backgroundImageUrl
+            ? undefined
+            : "radial-gradient(rgba(0,0,0,0.5) 30%, rgba(0,0,0,0.2) 100%) 50% 50%/100% 100% no-repeat, url('/smgschool-tartan.svg') 50% 50%/128px 128px repeat",
           backgroundPosition: `${
             (props.section.image?.hotspot?.x ?? 0.5) * 100
           }% ${(props.section.image?.hotspot?.y ?? 0.5) * 100}%`,
