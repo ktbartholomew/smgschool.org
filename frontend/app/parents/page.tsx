@@ -2,8 +2,13 @@
 
 import SiteFooter from "@/components/site-footer";
 import { TopNavHeader } from "@/components/site-header";
+import { client } from "@/sanity";
 
 export default async function ParentResourcesPage() {
+  const volunteerNeeds = await client.fetch(
+    `*[_type == 'volunteerNeed' && date > '2024-06-04' ] | order(date asc)`
+  );
+
   return (
     <>
       <TopNavHeader path="/parents" />
@@ -70,10 +75,36 @@ export default async function ParentResourcesPage() {
         <div>
           <div className="border border-slate-300 shadow-md rounded-md p-8 mb-8">
             <a href="https://familyportal.renweb.com/">
-              <button className="bg-brand-primary hover:bg-brand-primary-600 text-white transition-colors py-2 px-8 block w-full rounded-md">
+              <button className="bg-sky-500 hover:bg-sky-600 text-white transition-colors py-2 px-8 block w-full rounded-md">
                 Log in to RenWeb
               </button>
             </a>
+          </div>
+
+          <div className="border border-slate-300 shadow-md rounded-md p-8 mb-8">
+            <div className="prose">
+              <h4>Volunteer</h4>
+            </div>
+            <ul>
+              {volunteerNeeds.map((v) => {
+                return (
+                  <li key={v._id} className="mb-4">
+                    <div>
+                      <strong>{v.title}</strong>:{" "}
+                      {new Date(v.date).toLocaleDateString()}
+                    </div>
+                    <div className="text-sm mb-2">{v.shortDescription}</div>
+                    <div>
+                      <a href={v.signupUrl} target="_blank">
+                        <button className="text-sm bg-sky-500 hover:bg-sky-600 text-white transition-colors py-1 px-4 rounded-md">
+                          Sign up
+                        </button>
+                      </a>
+                    </div>
+                  </li>
+                );
+              })}
+            </ul>
           </div>
           <div className="border border-slate-300 shadow-md rounded-md p-8 mb-8">
             <div className="prose">
