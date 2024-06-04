@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import Script from "next/script";
 
 declare class GreatFeats {
   constructor(url: string);
@@ -21,7 +21,7 @@ declare global {
 }
 
 export default function OneCauseDonationFormBlock(props: { section: any }) {
-  useEffect(() => {
+  const onload = () => {
     const el = document.getElementById("inline-donation-form");
     if (!el || !props.section?.challengeUrl) {
       return;
@@ -30,11 +30,14 @@ export default function OneCauseDonationFormBlock(props: { section: any }) {
     const gf = new window.GreatFeats(props.section?.challengeUrl);
 
     gf.embedDonationForm(el, window.location.href, false);
-  }, []);
+  };
 
   return (
     <section>
-      <script src="https://greatfeats-assets.s3.amazonaws.com/scripts/embed/0.2.0/greatfeats-embed.min.js"></script>
+      <Script
+        src="https://greatfeats-assets.s3.amazonaws.com/scripts/embed/0.2.0/greatfeats-embed.min.js"
+        onReady={onload}
+      />
       <div id="inline-donation-form" className="w-full"></div>
     </section>
   );

@@ -76,7 +76,7 @@ export default async function DynamicPage(props: PageProps) {
         <main
           className={
             page.sidebarSections?.length
-              ? "basis-full md:basis-3/4"
+              ? "basis-full md:basis-auto flex-grow-0"
               : "basis-full"
           }
         >
