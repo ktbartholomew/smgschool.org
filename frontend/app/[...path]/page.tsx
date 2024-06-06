@@ -53,7 +53,22 @@ export default async function DynamicPage(props: PageProps) {
         content: PortableTextBlock[];
       }[];
     }[]
-  >(`*[_type == 'page' && slug.current == '/${props.params.path.join("/")}']`);
+  >(`
+  *[
+    _type == 'page' && slug.current == '/${props.params.path.join("/")}'
+  ] {
+    ...,
+    sections[]{
+      ...,
+      _type == "heroBlock" => {
+        image {
+        ...,
+        "lqip": @.asset->metadata.lqip,
+        "blurHash": @.asset->metadata.blurHash
+        }
+      }
+    }
+  }`);
 
   if (pages.length === 0) {
     return notFound();

@@ -18,15 +18,12 @@ export default async function ParentResourcesPage() {
   return (
     <>
       <TopNavHeader path="/parents" />
-      <div className="prose px-16">
+      <div className="prose px-4 md:px-16">
         <h1>Parent Resources</h1>
       </div>
-      <div
-        className="grid p-16 gap-8"
-        style={{ gridTemplateColumns: "3fr 1fr" }}
-      >
+      <div className="grid p-4 md:p-8 gap-8 grid-cols-1 md:grid-cols-[3fr_1fr]">
         <div>
-          <div className="border border-slate-300 shadow-md rounded-md p-8 mb-8">
+          <div className="border border-slate-300 shadow-md rounded-md p-4 md:p-8 mb-8">
             <div className="prose">
               <h3>Summer Info</h3>
               <p>
@@ -69,7 +66,7 @@ export default async function ParentResourcesPage() {
               </p>
             </div>
           </div>
-          <div className="border border-slate-300 shadow-md rounded-md p-8 mb-8">
+          <div className="border border-slate-300 shadow-md rounded-md p-4 md:p-8 mb-8">
             <h3 className="mb-4 text-4xl font-bold">Calendar</h3>
             <iframe
               src="https://calendar.google.com/calendar/u/0/embed?src=en.usa%23holiday@group.v.calendar.google.com&ctz=America/Chicago"
@@ -79,7 +76,7 @@ export default async function ParentResourcesPage() {
           </div>
         </div>
         <div>
-          <div className="border border-slate-300 shadow-md rounded-md p-8 mb-8">
+          <div className="border border-slate-300 shadow-md rounded-md p-4 md:p-8 mb-8">
             <a href="https://familyportal.renweb.com/">
               <button className="bg-sky-500 hover:bg-sky-600 text-white transition-colors py-2 px-8 block w-full rounded-md">
                 Log in to RenWeb
@@ -87,7 +84,7 @@ export default async function ParentResourcesPage() {
             </a>
           </div>
 
-          <div className="border border-slate-300 shadow-md rounded-md p-8 mb-8">
+          <div className="border border-slate-300 shadow-md rounded-md p-4 md:p-8 mb-8">
             <div className="prose">
               <h4>Volunteer</h4>
             </div>
@@ -114,7 +111,7 @@ export default async function ParentResourcesPage() {
               })}
             </ul>
           </div>
-          <div className="border border-slate-300 shadow-md rounded-md p-8 mb-8">
+          <div className="border border-slate-300 shadow-md rounded-md p-4 md:p-8 mb-8">
             <div className="prose">
               <h4>Quick Links</h4>
               <ul>
@@ -136,7 +133,7 @@ export default async function ParentResourcesPage() {
               </ul>
             </div>
           </div>
-          <div className="border border-slate-300 shadow-md rounded-md p-8 mb-8">
+          <div className="border border-slate-300 shadow-md rounded-md p-4 md:p-8 mb-8">
             <div className="prose">
               <h4>Documents</h4>
               <ul>

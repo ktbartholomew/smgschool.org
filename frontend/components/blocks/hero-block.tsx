@@ -6,12 +6,13 @@ import {
   SanityImageObject,
   SanityImageSource,
 } from "@sanity/image-url/lib/types/types";
+import { LazyHeroImage } from "../lazy-hero-image";
 
 export default async function HeroBlock(props: {
   section: {
     _key: string;
     title?: string;
-    image?: SanityImageSource & SanityImageObject;
+    image?: SanityImageSource & SanityImageObject & { lqip?: string };
     blurImage?: boolean;
     colorOverlay?: string;
   };
@@ -32,7 +33,7 @@ export default async function HeroBlock(props: {
   }
 
   let backgroundImageUrl = props.section.image
-    ? builder.image(props.section.image).format("webp").url()
+    ? builder.image(props.section.image).format("webp").width(2000).url()
     : "";
 
   if (props.section.blurImage) {
@@ -43,24 +44,11 @@ export default async function HeroBlock(props: {
 
   return (
     <section className="relative" style={{ height: "50vh" }}>
-      <div
-        className={
-          props.section.image
-            ? "absolute h-full w-full bg-cover"
-            : "absolute h-full w-full"
-        }
-        style={{
-          backgroundImage: backgroundImageUrl
-            ? `url(${backgroundImageUrl})`
-            : undefined,
-          background: backgroundImageUrl
-            ? undefined
-            : "radial-gradient(rgba(0,0,0,0.5) 30%, rgba(0,0,0,0.2) 100%) 50% 50%/100% 100% no-repeat, url('/smgschool-tartan.svg') 50% 50%/128px 128px repeat",
-          backgroundPosition: `${
-            (props.section.image?.hotspot?.x ?? 0.5) * 100
-          }% ${(props.section.image?.hotspot?.y ?? 0.5) * 100}%`,
-        }}
-      ></div>
+      <LazyHeroImage
+        imageUrl={backgroundImageUrl}
+        placeholderUrl={props.section.image?.lqip}
+        hotspot={props.section.image?.hotspot}
+      />
       <div
         className={`absolute h-full w-full ${colorOverlayClass} mix-blend-multiply`}
       ></div>

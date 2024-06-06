@@ -18,7 +18,7 @@ export const heroBlock = defineType({
       name: 'image',
       description:
         "A background image which will fill the hero section. If you don't specify an image, the SMG plaid pattern will be used instead.",
-      options: {hotspot: true},
+      options: {hotspot: true, metadata: ['lqip', 'blurhash', 'palette']},
     }),
     defineField({
       type: 'boolean',
