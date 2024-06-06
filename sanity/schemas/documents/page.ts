@@ -41,6 +41,9 @@ export const page = defineType({
           type: 'donationBlock',
         }),
         defineArrayMember({
+          type: 'formEmbedBlock',
+        }),
+        defineArrayMember({
           type: 'ctaBlock',
         }),
         defineArrayMember({

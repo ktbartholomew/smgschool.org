@@ -8,6 +8,7 @@ import {eyebrowNavLink} from './documents/eyebrowNavLink'
 import {mainNavLink} from './documents/mainNavLink'
 import {donationBlock} from './donationBlock'
 import {volunteerNeed} from './documents/volunteerNeed'
+import {formEmbedBlock} from './formEmbed'
 
 export const schemaTypes = [
   cta,
@@ -15,6 +16,7 @@ export const schemaTypes = [
   heroBlock,
   imageCarousel,
   donationBlock,
+  formEmbedBlock,
   textBlock,
   page,
   eyebrowNavLink,
