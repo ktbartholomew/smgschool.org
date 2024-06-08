@@ -53,12 +53,7 @@ export function LazyHeroImage(props: {
           }
           style={{
             opacity: imageLoaded ? 0 : 1,
-            backgroundImage: props.imageUrl
-              ? `url(${props.placeholderUrl})`
-              : undefined,
-            background: props.imageUrl
-              ? undefined
-              : "radial-gradient(rgba(0,0,0,0.5) 30%, rgba(0,0,0,0.2) 100%) 50% 50%/100% 100% no-repeat, url('/smgschool-tartan.svg') 50% 50%/128px 128px repeat",
+            backgroundImage: `url('${props.placeholderUrl}')`,
             backgroundPosition: `${(props.hotspot?.x ?? 0.5) * 100}% ${
               (props.hotspot?.y ?? 0.5) * 100
             }%`,

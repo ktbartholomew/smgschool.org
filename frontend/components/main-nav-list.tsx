@@ -39,7 +39,7 @@ export function MainNavList(props: { urlPath?: string; links: TNavLink[] }) {
         <div
           className={`${
             show ? "block" : "hidden"
-          } fixed top-0 left-0 w-[100vh] h-[100vh] z-50 md:static md:w-auto md:h-auto md:flex md:z-auto bg-brand-primary items-stretch text-xl md:text-lg`}
+          } fixed top-0 left-0 w-[100vh] h-[100vh] overflow-scroll z-50 md:static md:w-auto md:h-auto md:overflow-hidden md:flex md:z-auto bg-brand-primary items-stretch text-xl md:text-lg`}
         >
           <button
             className="md:hidden h-[80px] text-3xl p-4"
