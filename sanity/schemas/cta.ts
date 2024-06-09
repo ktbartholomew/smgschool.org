@@ -1,18 +1,17 @@
-import { defineType, defineField } from 'sanity'
+import {defineType, defineField} from 'sanity'
 
 export const cta = defineType({
-  type: "object",
-  name: "cta",
-  title: "Call to action",
+  type: 'object',
+  name: 'cta',
+  title: 'Call to action',
   fields: [
     defineField({
-      type: "string",
-      name: "label",
+      type: 'string',
+      name: 'label',
     }),
     defineField({
-      type: "url",
-      name: "link",
+      type: 'string',
+      name: 'link',
     }),
   ],
-});
-
+})
