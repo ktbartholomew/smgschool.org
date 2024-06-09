@@ -1,7 +1,5 @@
 "use client";
 
-import { useContext } from "react";
-import { SecondaryNavContext } from "./secondary-nav-list";
 import Link from "next/link";
 
 const mainLinkClass =
@@ -33,24 +31,40 @@ export function MainNavLink({
   currentPath: string;
   link: TNavLink;
 }) {
-  const navContext = useContext(SecondaryNavContext);
   const href = (link.page ? link.page?.slug.current : link.url) ?? "";
 
   return (
     <>
-      <Link
-        data-nav-link={link._id}
-        className={
-          mainLinkClass +
-          (navContext.active === link._id ||
-          currentPath.startsWith(href || "null")
-            ? " md:bg-brand-primary-600"
-            : "")
-        }
-        href={href}
-      >
-        {link.title ? link.title : link.page?.title}
-      </Link>
+      <li className="py-4 md:py-0">
+        <Link
+          data-nav-link={link._id}
+          className={
+            mainLinkClass +
+            (currentPath.startsWith(href || "null")
+              ? " md:bg-brand-primary-600"
+              : "")
+          }
+          href={href}
+        >
+          {link.title ? link.title : link.page?.title}
+        </Link>
+        <ul className="md:hidden text-white text-base md:absolute md:z-30 md:bg-brand-primary-600 ">
+          {link.secondaryLinks?.map((slink) => {
+            const href =
+              (slink.page ? slink.page?.slug.current : slink.url) ?? "";
+            return (
+              <li key={slink._id}>
+                <Link
+                  className="block p-4 text-white no-underline hover:underline"
+                  href={href}
+                >
+                  {slink.title}
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
+      </li>
     </>
   );
 }

@@ -66,5 +66,27 @@ export const page = defineType({
         }),
       ],
     }),
+    defineField({
+      type: 'string',
+      name: 'seoTitle',
+      title: 'SEO Title',
+      description:
+        'This title appears in the web browser tab and in search results. "Saint Maria Goretti Catholic School" will automatically be appended to the end.',
+      group: 'seo',
+    }),
+    defineField({
+      type: 'string',
+      name: 'seoDescription',
+      title: 'SEO Description',
+      description:
+        'This is a description of what this page contains, which might appear as the "snippet" in search results. Be sure to make this unique, using essential keywords. Write it like a pitch that convinces the user that the page is exactly what they\'re looking for.',
+      group: 'seo',
+    }),
+  ],
+  groups: [
+    {
+      name: 'seo',
+      title: 'SEO',
+    },
   ],
 })

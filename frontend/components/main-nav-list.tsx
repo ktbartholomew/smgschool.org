@@ -50,25 +50,11 @@ export function MainNavList(props: { urlPath?: string; links: TNavLink[] }) {
           <ul className="md:flex items-stretch text-xl md:text-lg px-4 ">
             {props.links.map((m) => {
               return (
-                <li key={m._id} className="py-4 md:py-0">
-                  <MainNavLink link={m} currentPath={props.urlPath ?? ""} />
-                  <ul className="md:hidden text-base">
-                    {m.secondaryLinks?.map((link) => {
-                      const href =
-                        (link.page ? link.page?.slug.current : link.url) ?? "";
-                      return (
-                        <li key={link._id}>
-                          <Link
-                            className="block p-4 text-white no-underline hover:underline"
-                            href={href}
-                          >
-                            {link.title}
-                          </Link>
-                        </li>
-                      );
-                    })}
-                  </ul>
-                </li>
+                <MainNavLink
+                  key={m._id}
+                  link={m}
+                  currentPath={props.urlPath ?? ""}
+                />
               );
             })}
           </ul>

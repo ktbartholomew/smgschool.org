@@ -3,7 +3,6 @@
 import { client } from "@/sanity";
 import { StickyLogo } from "./sticky-logo";
 import Link from "next/link";
-import { SecondaryNavController, SecondaryNavList } from "./secondary-nav-list";
 import { TNavLink } from "./main-nav-link";
 import { MainNavList } from "./main-nav-list";
 
@@ -55,29 +54,8 @@ export async function TopNavHeader({ path }: { path?: string }) {
             ))}
           </ul>
         </nav>
-        <SecondaryNavController>
-          <MainNavList links={mainNavLinks} />
-          {mainNavLinks.map((m) => (
-            <SecondaryNavList key={m._id} navLinkId={m._id}>
-              <ul>
-                {m.secondaryLinks?.map((link) => {
-                  const href =
-                    (link.page ? link.page?.slug.current : link.url) ?? "";
-                  return (
-                    <li key={link._id}>
-                      <Link
-                        className="block p-4 px-6 text-white no-underline hover:underline"
-                        href={href}
-                      >
-                        {link.title}
-                      </Link>
-                    </li>
-                  );
-                })}
-              </ul>
-            </SecondaryNavList>
-          ))}
-        </SecondaryNavController>
+
+        <MainNavList links={mainNavLinks} />
       </header>
     </>
   );

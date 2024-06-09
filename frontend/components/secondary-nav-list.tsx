@@ -6,9 +6,7 @@ import {
   ReactNode,
   SetStateAction,
   createContext,
-  useContext,
   useEffect,
-  useLayoutEffect,
   useState,
 } from "react";
 
@@ -46,42 +44,8 @@ export function SecondaryNavList({
   children: ReactNode;
   navLinkId: string;
 }) {
-  const navContext = useContext(SecondaryNavContext);
-  const [hidden, setHidden] = useState(navContext.active !== navLinkId);
+  const [hidden, setHidden] = useState(false);
   const [left, setLeft] = useState(0);
-
-  useLayoutEffect(() => {
-    const link = document.querySelector(`[data-nav-link="${navLinkId}"]`);
-    if (!link) {
-      return;
-    }
-
-    setLeft(window.innerWidth - link.getBoundingClientRect().right);
-
-    const handler = () => {
-      setTimeout(() => {
-        setHidden(false);
-        setLeft(window.innerWidth - link.getBoundingClientRect().right);
-
-        navContext.setActive(navLinkId);
-      }, 1);
-    };
-
-    const unhandler = () => {
-      setHidden(true);
-      navContext.setActive("");
-    };
-
-    link.addEventListener("mouseenter", handler);
-    link.addEventListener("focus", handler);
-    link.addEventListener("blur", unhandler);
-
-    return () => {
-      link.removeEventListener("mouseenter", handler);
-      link.removeEventListener("focus", handler);
-      link.removeEventListener("blur", unhandler);
-    };
-  }, [navLinkId]);
 
   return (
     <nav
