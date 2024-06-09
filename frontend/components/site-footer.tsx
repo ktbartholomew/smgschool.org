@@ -40,7 +40,9 @@ export default async function SiteFooter() {
         </div>
         <div className="grid flex-grow lg:grid-cols-4 gap-8 gap-y-16">
           <div className="footer-column">
-            <h3>About</h3>
+            <h3>
+              <Link href="/about">About</Link>
+            </h3>
             <ul>
               <li>
                 <Link href="/about/faculty-and-staff">Faculty & Staff</Link>
@@ -54,7 +56,9 @@ export default async function SiteFooter() {
             </ul>
           </div>
           <div className="footer-column">
-            <h3>Admissions</h3>
+            <h3>
+              <Link href="/admissions">Admissions</Link>
+            </h3>
             <ul>
               <li>
                 <Link href="/admissions/tour">Schedule a Tour</Link>
@@ -71,7 +75,9 @@ export default async function SiteFooter() {
             </ul>
           </div>
           <div className="footer-column">
-            <h3>Academics</h3>
+            <h3>
+              <Link href="/academics">Academics</Link>
+            </h3>
             <ul>
               <li>
                 <Link href="/academics/programs">Programs</Link>
@@ -90,10 +96,12 @@ export default async function SiteFooter() {
             </ul>
           </div>
           <div className="footer-column">
-            <h3>Support Us</h3>
+            <h3>
+              <Link href="/support-us">Support Us</Link>
+            </h3>
             <ul>
               <li>
-                <Link href="/support/volunteer">Volunteer</Link>
+                <Link href="/support-us/volunteer">Volunteer</Link>
               </li>
               <li>
                 <Link href="/support/donate">Donate</Link>

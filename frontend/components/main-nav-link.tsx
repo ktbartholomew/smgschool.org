@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import "./main-nav-link.css";
 
 const mainLinkClass =
   "flex relative items-center md:px-6 transition-colors h-full text-white no-underline md:hover:bg-brand-primary-600";
@@ -35,7 +36,7 @@ export function MainNavLink({
 
   return (
     <>
-      <li className="py-4 md:py-0">
+      <li className="main-nav-link py-4 md:py-0">
         <Link
           data-nav-link={link._id}
           className={
@@ -48,7 +49,11 @@ export function MainNavLink({
         >
           {link.title ? link.title : link.page?.title}
         </Link>
-        <ul className="md:hidden text-white text-base md:absolute md:z-30 md:bg-brand-primary-600 ">
+        <ul
+          className={
+            " text-white text-base md:absolute md:z-30 md:bg-brand-primary-600 "
+          }
+        >
           {link.secondaryLinks?.map((slink) => {
             const href =
               (slink.page ? slink.page?.slug.current : slink.url) ?? "";

@@ -5,7 +5,7 @@
 
 .site-footer a {
   @apply underline;
-  @apply text-sky-200;
+  @apply text-sky-100;
 }
 
 .site-footer .footer-column h3 {

@@ -1,0 +1,13 @@
+@media screen and (min-width: 768px) {
+  .main-nav-link ul {
+    display: none;
+  }
+
+  .main-nav-link:hover ul {
+    display: block;
+  }
+
+  .main-nav-link:hover > a {
+    @apply md:bg-brand-primary-600;
+  }
+}
