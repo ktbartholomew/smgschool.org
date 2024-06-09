@@ -16,6 +16,7 @@ export default async function HeroBlock(props: {
     blurImage?: boolean;
     colorOverlay?: string;
   };
+  className?: string;
 }) {
   const builder = imageUrl(client);
 
@@ -43,7 +44,7 @@ export default async function HeroBlock(props: {
   }
 
   return (
-    <section className="relative" style={{ height: "50vh" }}>
+    <section className={"relative " + (props.className ?? "")}>
       <LazyHeroImage
         imageUrl={backgroundImageUrl}
         placeholderUrl={props.section.image?.lqip}

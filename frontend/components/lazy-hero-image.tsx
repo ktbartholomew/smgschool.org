@@ -44,7 +44,7 @@ export function LazyHeroImage(props: {
       ></div>
 
       {/* The placeholder */}
-      {props.imageUrl && (
+      {props.imageUrl && props.placeholderUrl ? (
         <div
           className={
             props.imageUrl
@@ -59,7 +59,7 @@ export function LazyHeroImage(props: {
             }%`,
           }}
         ></div>
-      )}
+      ) : null}
     </>
   );
 }
