@@ -1,7 +1,6 @@
 "use client";
 
 import {
-  Children,
   Context,
   Dispatch,
   ReactNode,
@@ -60,9 +59,12 @@ export function SecondaryNavList({
     setLeft(window.innerWidth - link.getBoundingClientRect().right);
 
     const handler = () => {
-      setHidden(false);
-      setLeft(window.innerWidth - link.getBoundingClientRect().right);
-      navContext.setActive(navLinkId);
+      setTimeout(() => {
+        setHidden(false);
+        setLeft(window.innerWidth - link.getBoundingClientRect().right);
+
+        navContext.setActive(navLinkId);
+      }, 1);
     };
 
     const unhandler = () => {
