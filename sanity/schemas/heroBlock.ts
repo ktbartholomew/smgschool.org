@@ -21,6 +21,18 @@ export const heroBlock = defineType({
       options: {hotspot: true, metadata: ['lqip', 'blurhash', 'palette']},
     }),
     defineField({
+      type: 'array',
+      name: 'images',
+      description:
+        "Background images which will fill the hero section. If you don't specify any images, the SMG plaid pattern will be used instead.",
+      of: [
+        defineArrayMember({
+          type: 'image',
+          options: {hotspot: true, metadata: ['lqip', 'blurhash', 'palette']},
+        }),
+      ],
+    }),
+    defineField({
       type: 'boolean',
       description:
         'Whether to blur the background image. Use this if the image is low-resolution or has too many distracting details.',

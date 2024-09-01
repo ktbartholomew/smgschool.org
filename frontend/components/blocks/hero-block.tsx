@@ -7,6 +7,7 @@ import {
   SanityImageSource,
 } from "@sanity/image-url/lib/types/types";
 import { LazyHeroImage } from "../lazy-hero-image";
+import { Slideshow } from "../slideshow";
 
 export default async function HeroBlock(props: {
   section: {
@@ -14,6 +15,7 @@ export default async function HeroBlock(props: {
     title?: string;
     cta?: { _key: string; label: string; link: string }[];
     image?: SanityImageSource & SanityImageObject & { lqip?: string };
+    images?: (SanityImageSource & SanityImageObject & { lqip?: string })[];
     blurImage?: boolean;
     colorOverlay?: string;
   };
@@ -46,11 +48,18 @@ export default async function HeroBlock(props: {
 
   return (
     <section className={"relative " + (props.className ?? "")}>
-      <LazyHeroImage
-        imageUrl={backgroundImageUrl}
-        placeholderUrl={props.section.image?.lqip}
-        hotspot={props.section.image?.hotspot}
-      />
+      {props.section.image && !props.section.images ? (
+        <LazyHeroImage
+          imageUrl={backgroundImageUrl}
+          placeholderUrl={props.section.image?.lqip}
+          hotspot={props.section.image?.hotspot}
+        />
+      ) : null}
+      {props.section.images ? (
+        <div className="absolute h-full w-full">
+          <Slideshow images={props.section.images} />
+        </div>
+      ) : null}
       <div
         className={`absolute h-full w-full ${colorOverlayClass} mix-blend-multiply`}
       ></div>
