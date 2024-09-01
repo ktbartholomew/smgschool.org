@@ -1,7 +1,7 @@
 "use server";
 
 import HeroBlock from "@/components/blocks/hero-block";
-import { LazyHeroImage } from "@/components/lazy-hero-image";
+import TwoColumnHeroBlock from "@/components/blocks/two-column-hero-block";
 import SiteFooter from "@/components/site-footer";
 import { TopNavHeader } from "@/components/site-header";
 import { client } from "@/sanity";
@@ -17,29 +17,7 @@ export default async function Home() {
       <TopNavHeader />
       <main className="">
         <HeroBlock section={page.sections[0]} className="h-[80vh]" />
-        <div className="px-4 py-16 md:py-32 md:px-16">
-          <div className="grid md:grid-cols-2 gap-16">
-            <div>
-              <h2 className="font-black tracking-tight text-3xl md:text-8xl text-balance mb-8">
-                70 Years of Excellence
-              </h2>
-              <p className="text-xl md:text-2xl mb-8">
-                Saint Maria Goretti Catholic School is the leader in Catholic
-                education in D/FW. Since being founded by the sisters of St.
-                Mary of Namur in 1954, SMG has been at the center of Catholic
-                life in Arlington.
-              </p>
-              <div>
-                <Link className="text-2xl underline text-sky-600" href="/about">
-                  Learn more about SMG
-                </Link>
-              </div>
-            </div>
-            <div>
-              <img src="/ai-students-04.jpg" alt="" />
-            </div>
-          </div>
-        </div>
+        <TwoColumnHeroBlock section={page.sections[1]} />
         <div className="h-[80vh] relative">
           <div className="overflow-hidden">
             <img

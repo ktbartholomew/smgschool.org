@@ -9,6 +9,9 @@ import {mainNavLink} from './documents/mainNavLink'
 import {donationBlock} from './donationBlock'
 import {volunteerNeed} from './documents/volunteerNeed'
 import {formEmbedBlock} from './formEmbed'
+import {person} from './documents/person'
+import {personListBlock} from './personListBlock'
+import {twoColumnHeroBlock} from './twoColumnHeroBlock'
 
 export const schemaTypes = [
   cta,
@@ -18,7 +21,10 @@ export const schemaTypes = [
   donationBlock,
   formEmbedBlock,
   textBlock,
+  twoColumnHeroBlock,
   page,
+  person,
+  personListBlock,
   eyebrowNavLink,
   volunteerNeed,
   mainNavLink,

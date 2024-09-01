@@ -130,4 +130,18 @@ body {
   .prose ul {
     list-style-type: disc;
   }
+
+  .prose.hero h2 {
+    @apply font-black;
+    @apply tracking-tight;
+    @apply text-3xl;
+    @apply md:text-8xl;
+    @apply text-balance;
+    @apply mb-8;
+  }
+
+  .prose.hero p {
+    @apply text-xl;
+    @apply md:text-2xl;
+  }
 }

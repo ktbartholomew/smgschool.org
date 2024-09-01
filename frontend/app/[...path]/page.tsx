@@ -4,6 +4,7 @@ import { PageProps } from "@/.next/types/app/[...path]/page";
 import FormEmbedBlock from "@/components/blocks/form-embed-block";
 import HeroBlock from "@/components/blocks/hero-block";
 import OneCauseDonationFormBlock from "@/components/blocks/onecause-donation-form";
+import PersonListBlock from "@/components/blocks/person-list-block";
 import TextBlock from "@/components/blocks/text-block";
 import SiteFooter from "@/components/site-footer";
 import { TopNavHeader } from "@/components/site-header";
@@ -14,67 +15,94 @@ import {
   SanityImageSource,
 } from "@sanity/image-url/lib/types/types";
 import { notFound } from "next/navigation";
+import { metadata } from "@/app/layout";
 
-export default async function DynamicPage(props: PageProps) {
-  const pages = await client.fetch<
-    {
-      _id: string;
-      title: string;
-      sections: (
-        | {
-            _type: "textBlock";
-            _key: string;
-            title?: string;
-            content: PortableTextBlock[];
-          }
-        | {
-            _type: "heroBlock";
-            _key: string;
-            title?: string;
-            image?: SanityImageSource & SanityImageObject;
-          }
-        | {
-            _type: "donationBlock";
-            _key: string;
-            title?: string;
-            challengeUrl: string;
-          }
-        | {
-            _type: "formEmbedBlock";
-            _key: string;
-            title?: string;
-            url: string;
-          }
-      )[];
-      sidebarSections?: {
+type Page = {
+  _id: string;
+  title: string;
+  sections: (
+    | {
         _type: "textBlock";
         _key: string;
         title?: string;
         content: PortableTextBlock[];
-      }[];
-    }[]
-  >(`
-  *[
-    _type == 'page' && slug.current == '/${props.params.path.join("/")}'
-  ] {
-    ...,
-    sections[]{
-      ...,
-      _type == "heroBlock" => {
-        image {
-        ...,
-        "lqip": @.asset->metadata.lqip,
-        "blurHash": @.asset->metadata.blurHash
-        }
       }
+    | {
+        _type: "heroBlock";
+        _key: string;
+        title?: string;
+        image?: SanityImageSource & SanityImageObject;
+      }
+    | {
+        _type: "donationBlock";
+        _key: string;
+        title?: string;
+        challengeUrl: string;
+      }
+    | {
+        _type: "formEmbedBlock";
+        _key: string;
+        title?: string;
+        url: string;
+      }
+    | {
+        _type: "personListBlock";
+        _key: string;
+        title: string;
+        people: {}[];
+      }
+  )[];
+  sidebarSections?: {
+    _type: "textBlock";
+    _key: string;
+    title?: string;
+    content: PortableTextBlock[];
+  }[];
+  seoTitle?: string;
+  seoDescription?: string;
+};
+
+async function getPage(props: PageProps) {
+  const pages = await client.fetch<Page[]>(`
+*[
+  _type == 'page' && slug.current == '/${props.params.path.join("/")}'
+] {
+  ...,
+  sections[]{
+    ...,
+    _type == "heroBlock" => {
+      image {
+      ...,
+      "lqip": @.asset->metadata.lqip,
+      "blurHash": @.asset->metadata.blurHash
+      }
+    },
+    _type == "personListBlock" => {
+      people->
     }
-  }`);
+  }
+}`);
 
   if (pages.length === 0) {
     return notFound();
   }
 
-  const page = pages[0];
+  return pages[0];
+}
+
+export async function generateMetadata(props: PageProps) {
+  const page = await getPage(props);
+
+  return {
+    title: [page.seoTitle || page.title || undefined, metadata.title].join(
+      " | "
+    ),
+  };
+}
+
+export default async function DynamicPage(props: PageProps) {
+  const page = await getPage(props);
+
   let heroHeader;
 
   // If the first section of the page is a hero block, treat it as a full-width
@@ -114,6 +142,8 @@ export default async function DynamicPage(props: PageProps) {
                 return <OneCauseDonationFormBlock key={s._key} section={s} />;
               case "formEmbedBlock":
                 return <FormEmbedBlock key={s._key} section={s} />;
+              case "personListBlock":
+                return <PersonListBlock key={s._key} section={s} />;
               default:
                 return null;
             }

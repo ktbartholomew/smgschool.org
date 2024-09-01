@@ -35,6 +35,9 @@ export const page = defineType({
           type: 'heroBlock',
         }),
         defineArrayMember({
+          type: 'twoColumnHeroBlock',
+        }),
+        defineArrayMember({
           type: 'textBlock',
         }),
         defineArrayMember({
@@ -44,10 +47,7 @@ export const page = defineType({
           type: 'formEmbedBlock',
         }),
         defineArrayMember({
-          type: 'ctaBlock',
-        }),
-        defineArrayMember({
-          type: 'imageCarousel',
+          type: 'personListBlock',
         }),
       ],
     }),
