@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { VisualEditing } from "next-sanity";
+import { draftMode } from "next/headers";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -14,9 +16,13 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  draftMode().enable();
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        {children}
+        {draftMode().isEnabled && <VisualEditing />}
+      </body>
     </html>
   );
 }

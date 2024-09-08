@@ -78,7 +78,7 @@ async function getPage(props: PageProps) {
       }
     },
     _type == "personListBlock" => {
-      people->
+      people[]->
     }
   }
 }`);

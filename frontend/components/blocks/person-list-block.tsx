@@ -1,11 +1,56 @@
 "use server";
 
+import { client } from "@/sanity";
+import imageUrl from "@sanity/image-url";
+import {
+  SanityImageObject,
+  SanityImageSource,
+} from "@sanity/image-url/lib/types/types";
+import Image from "next/image";
+
+type Person = {
+  _id: string;
+  name: string;
+  position?: string;
+  photo?: SanityImageSource;
+  contactEmail?: string;
+  contactPhone?: string;
+  experience?: string;
+  bio?: any[];
+};
+
 export default async function PersonListBlock(props: {
-  section: { title?: string; people: {}[] };
+  section: { title?: string; people?: Person[] };
 }) {
+  const builder = imageUrl(client);
+
+  console.log(props);
   return (
-    <section className="prose px-4 py-8 md:px-8 md:text-lg max-w-prose mx-auto">
-      {props.section.title ? <h3>{props.section.title}</h3> : null}
+    <section className="prose px-4 py-8 md:px-8 md:text-lg mx-auto">
+      {props.section.title ? (
+        <h3 className="mb-8">{props.section.title}</h3>
+      ) : null}
+      <div className="grid gap-4 gap-y-8 md:grid-cols-3">
+        {props.section.people?.map((p) => (
+          <div key={p._id}>
+            {p.photo && (
+              <Image
+                alt={p.name}
+                src={builder.image(p.photo).width(300).url()}
+                width={300}
+                height={300}
+              />
+            )}
+            <h5 className="text-2xl">{p.name}</h5>
+            <div>
+              <strong>{p.position}</strong>
+            </div>
+            <div>
+              <em>{p.experience}</em>
+            </div>
+          </div>
+        ))}
+      </div>
     </section>
   );
 }
