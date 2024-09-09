@@ -16,6 +16,7 @@ import {
 } from "@sanity/image-url/lib/types/types";
 import { notFound } from "next/navigation";
 import { metadata } from "@/app/layout";
+import { Person } from "@/components/section";
 
 type Page = {
   _id: string;
@@ -49,7 +50,7 @@ type Page = {
         _type: "personListBlock";
         _key: string;
         title: string;
-        people: {}[];
+        people: Person[];
       }
   )[];
   sidebarSections?: {

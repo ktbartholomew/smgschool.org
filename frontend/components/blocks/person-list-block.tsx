@@ -2,22 +2,8 @@
 
 import { client } from "@/sanity";
 import imageUrl from "@sanity/image-url";
-import {
-  SanityImageObject,
-  SanityImageSource,
-} from "@sanity/image-url/lib/types/types";
 import Image from "next/image";
-
-type Person = {
-  _id: string;
-  name: string;
-  position?: string;
-  photo?: SanityImageSource;
-  contactEmail?: string;
-  contactPhone?: string;
-  experience?: string;
-  bio?: any[];
-};
+import { Person } from "../section";
 
 export default async function PersonListBlock(props: {
   section: { title?: string; people?: Person[] };
