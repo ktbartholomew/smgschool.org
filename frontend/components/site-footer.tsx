@@ -43,7 +43,7 @@ export default async function SiteFooter() {
             <h3>
               <Link href="/about">About</Link>
             </h3>
-            <ul>
+            <ul className="list-none">
               <li>
                 <Link href="/about/faculty-and-staff">Faculty & Staff</Link>
               </li>
@@ -59,7 +59,7 @@ export default async function SiteFooter() {
             <h3>
               <Link href="/admissions">Admissions</Link>
             </h3>
-            <ul>
+            <ul className="list-none">
               <li>
                 <Link href="/admissions/tour">Schedule a Tour</Link>
               </li>
@@ -78,7 +78,7 @@ export default async function SiteFooter() {
             <h3>
               <Link href="/academics">Academics</Link>
             </h3>
-            <ul>
+            <ul className="list-none">
               <li>
                 <Link href="/academics/programs">Programs</Link>
               </li>
@@ -99,7 +99,7 @@ export default async function SiteFooter() {
             <h3>
               <Link href="/support-us">Support Us</Link>
             </h3>
-            <ul>
+            <ul className="list-none">
               <li>
                 <Link href="/support-us/volunteer">Volunteer</Link>
               </li>
@@ -113,7 +113,7 @@ export default async function SiteFooter() {
           </div>
           <div className="footer-column">
             <h3>Parents</h3>
-            <ul>
+            <ul className="list-none">
               <li>
                 <Link
                   href="https://calendar.google.com/calendar/embed?src=en.usa%23holiday%40group.v.calendar.google.com&ctz=America%2FChicago"

@@ -40,9 +40,9 @@ export async function TopNavHeader({ path }: { path?: string }) {
       <StickyLogo />
       <header>
         <nav className="hidden md:flex bg-brand-primary-700 text-white text-sm md:px-16">
-          <ul className="flex items-center">
+          <ul className="flex items-center list-none m-0">
             {eyebrowNavLinks.map((l) => (
-              <li key={l._id}>
+              <li key={l._id} className="m-0">
                 <Link
                   className={eyebrowLinkClass}
                   href={l.url}

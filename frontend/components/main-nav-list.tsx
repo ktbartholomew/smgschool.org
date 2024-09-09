@@ -47,7 +47,7 @@ export function MainNavList(props: { urlPath?: string; links: TNavLink[] }) {
           >
             <HamburgerIcon />
           </button>
-          <ul className="md:flex items-stretch text-xl md:text-lg px-4 ">
+          <ul className="md:flex items-stretch text-xl md:text-lg px-4 list-none m-0">
             {props.links.map((m) => {
               return (
                 <MainNavLink

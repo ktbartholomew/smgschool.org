@@ -32,11 +32,11 @@ body {
     background-position: 50% 50%;
   }
 
-  .prose p {
+  p {
     @apply my-5;
   }
 
-  .prose h1 {
+  h1 {
     @apply text-5xl;
     @apply md:text-8xl;
     @apply tracking-tight;
@@ -44,7 +44,7 @@ body {
     @apply my-16;
   }
 
-  .prose h2 {
+  h2 {
     @apply text-4xl;
     @apply md:text-5xl;
     @apply tracking-tight;
@@ -52,7 +52,7 @@ body {
     @apply my-4;
   }
 
-  .prose h3 {
+  h3 {
     @apply text-3xl;
     @apply md:text-4xl;
     @apply tracking-tight;
@@ -60,7 +60,7 @@ body {
     @apply my-4;
   }
 
-  .prose h4 {
+  h4 {
     @apply text-2xl;
     @apply tracking-tight;
     @apply font-semibold;
@@ -70,12 +70,12 @@ body {
     @apply border-b-brand-primary-600;
   }
 
-  .prose h5 {
+  h5 {
     @apply font-bold;
     @apply tracking-tight;
   }
 
-  .prose h6 {
+  h6 {
     @apply font-bold;
     @apply tracking-tight;
   }
@@ -87,7 +87,7 @@ body {
     @apply mt-8;
   }
 
-  .prose blockquote {
+  blockquote {
     @apply text-lg;
     @apply pl-4;
     @apply py-4;
@@ -97,41 +97,52 @@ body {
     @apply bg-slate-100;
   }
 
-  .prose a {
+  a {
     @apply text-sky-500;
     @apply underline;
   }
 
-  .prose strong,
-  .prose b {
+  strong,
+  b {
     @apply font-bold;
   }
 
-  .prose em,
-  .prose i {
+  em,
+  i {
     @apply italic;
   }
 
-  .prose ol,
-  .prose ul {
+  ol,
+  ul {
     @apply ps-5;
     @apply my-5;
   }
 
-  .prose ol li,
-  .prose ul li {
+  ol li,
+  ul li {
     @apply my-2;
   }
 
-  .prose ol {
+  ol {
     list-style-type: decimal;
   }
 
-  .prose ul {
+  ul {
     list-style-type: disc;
   }
 
-  .prose.hero h2 {
+  ol.list-none,
+  ul.list-none {
+    @apply my-0;
+    @apply ps-0;
+  }
+
+  ol.list-none li,
+  ul.list-none li {
+    @apply my-0;
+  }
+
+  .hero h2 {
     @apply font-black;
     @apply tracking-tight;
     @apply text-3xl;
@@ -140,7 +151,7 @@ body {
     @apply mb-8;
   }
 
-  .prose.hero p {
+  .hero p {
     @apply text-xl;
     @apply md:text-2xl;
   }

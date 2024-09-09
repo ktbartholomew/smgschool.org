@@ -36,7 +36,7 @@ export function MainNavLink({
 
   return (
     <>
-      <li className="main-nav-link py-4 md:py-0">
+      <li className="main-nav-link m-0 py-4 md:py-0">
         <Link
           data-nav-link={link._id}
           className={
@@ -51,7 +51,7 @@ export function MainNavLink({
         </Link>
         <ul
           className={
-            " text-white text-base md:absolute md:z-30 md:bg-brand-primary-600 "
+            " text-white text-base md:absolute md:z-30 md:bg-brand-primary-600 m-0 list-none p-0"
           }
         >
           {link.secondaryLinks?.map((slink) => {
