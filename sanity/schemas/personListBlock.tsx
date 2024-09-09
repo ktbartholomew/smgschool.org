@@ -12,7 +12,35 @@ export const personListBlock = defineType({
     defineField({
       type: 'array',
       name: 'people',
-      of: [defineArrayMember({type: 'reference', to: [{type: 'person'}]})],
+      of: [
+        defineArrayMember({
+          type: 'object',
+          name: 'peopleLink',
+          fields: [
+            defineField({name: 'person', type: 'reference', to: [{type: 'person'}]}),
+            defineField({
+              type: 'string',
+              name: 'alternateTitle',
+              title: 'Alternate Title',
+              description:
+                "An alternate title for this person to be used in this list only. If unset, the person's primary title will be used.",
+            }),
+          ],
+          preview: {
+            select: {
+              title: 'person.name',
+              subtitle: 'alternateTitle',
+              media: 'person.photo',
+            },
+          },
+        }),
+      ],
     }),
   ],
+  preview: {
+    select: {
+      title: 'title',
+      media: 'people.0.person.photo',
+    },
+  },
 })
