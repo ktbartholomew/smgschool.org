@@ -17,11 +17,19 @@ import {
 import { notFound } from "next/navigation";
 import { metadata } from "@/app/layout";
 import { Person } from "@/components/section";
+import TwoColumnTextBlock from "@/components/blocks/two-column-text-block";
 
 type Page = {
   _id: string;
   title: string;
   sections: (
+    | {
+        _type: "twoColumnTextBlock";
+        _key: string;
+        title?: string;
+        column1: PortableTextBlock[];
+        column2: PortableTextBlock[];
+      }
     | {
         _type: "textBlock";
         _key: string;
@@ -141,6 +149,8 @@ export default async function DynamicPage(props: PageProps) {
                 );
               case "textBlock":
                 return <TextBlock key={s._key} section={s} />;
+              case "twoColumnTextBlock":
+                return <TwoColumnTextBlock key={s._key} section={s} />;
               case "donationBlock":
                 return <OneCauseDonationFormBlock key={s._key} section={s} />;
               case "formEmbedBlock":

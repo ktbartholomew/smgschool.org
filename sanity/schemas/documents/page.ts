@@ -41,6 +41,9 @@ export const page = defineType({
           type: 'textBlock',
         }),
         defineArrayMember({
+          type: 'twoColumnTextBlock',
+        }),
+        defineArrayMember({
           type: 'donationBlock',
         }),
         defineArrayMember({

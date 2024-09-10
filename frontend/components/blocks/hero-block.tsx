@@ -48,6 +48,7 @@ export default async function HeroBlock(props: {
 
   return (
     <section className={"relative " + (props.className ?? "")}>
+      {/* Single image with lazy-load helpers */}
       {props.section.image && !props.section.images ? (
         <LazyHeroImage
           imageUrl={backgroundImageUrl}
@@ -55,10 +56,17 @@ export default async function HeroBlock(props: {
           hotspot={props.section.image?.hotspot}
         />
       ) : null}
+
+      {/* Slideshow */}
       {props.section.images ? (
         <div className="absolute h-full w-full">
           <Slideshow images={props.section.images} />
         </div>
+      ) : null}
+
+      {/* Tartan pattern */}
+      {!props.section.image && !props.section.images ? (
+        <LazyHeroImage imageUrl={""} />
       ) : null}
       <div
         className={`absolute h-full w-full ${colorOverlayClass} mix-blend-multiply`}

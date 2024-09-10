@@ -12,6 +12,7 @@ import {formEmbedBlock} from './formEmbed'
 import {person} from './documents/person'
 import {personListBlock} from './personListBlock'
 import {twoColumnHeroBlock} from './twoColumnHeroBlock'
+import {twoColumnTextBlock} from './twoColumnTextBlock'
 
 export const schemaTypes = [
   cta,
@@ -21,6 +22,7 @@ export const schemaTypes = [
   donationBlock,
   formEmbedBlock,
   textBlock,
+  twoColumnTextBlock,
   twoColumnHeroBlock,
   page,
   person,
