@@ -1,4 +1,4 @@
-import {defineType, defineField} from 'sanity'
+import {defineType, defineField, defineArrayMember} from 'sanity'
 
 export const donationBlock = defineType({
   type: 'object',
@@ -11,14 +11,36 @@ export const donationBlock = defineType({
         'This title isn’t displayed anywhere; it’s only used to help you identify this donation block.',
     }),
     defineField({
+      name: 'content',
+      type: 'array',
+      of: [
+        defineArrayMember({
+          type: 'block',
+        }),
+        defineArrayMember({
+          type: 'image',
+          fields: [
+            {
+              type: 'string',
+              name: 'caption',
+            },
+          ],
+          options: {hotspot: true},
+        }),
+      ],
+    }),
+    defineField({
       type: 'string',
-      name: 'challengeUrl',
-      title: 'Challenge URL',
-      validation: (rule) => rule.required() && rule.regex(/^https:\/\/p2p\.onecause\.com\/.+?$/),
+      name: 'paymentLinkUrl',
+      title: 'Payment Link URL',
+      validation: (rule) => rule.required() && rule.regex(/^https:\/\/square\.link\/.+?$/),
       description: (
         <>
-          A URL like <code>https://p2p.onecause.com/smgschool</code>. This is the OneCause campaign
-          that will receive donations.
+          A URL for a{' '}
+          <a href="https://app.squareup.com/dashboard/payment-links" target="_blank">
+            Square Payment Link
+          </a>
+          .
         </>
       ),
     }),

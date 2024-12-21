@@ -53,7 +53,8 @@ type Page = {
         _type: "donationBlock";
         _key: string;
         title?: string;
-        challengeUrl: string;
+        content: PortableTextBlock[];
+        paymentLinkUrl: string;
       }
     | {
         _type: "formEmbedBlock";
