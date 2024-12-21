@@ -3,7 +3,7 @@
 import { PageProps } from "@/.next/types/app/[...path]/page";
 import FormEmbedBlock from "@/components/blocks/form-embed-block";
 import HeroBlock from "@/components/blocks/hero-block";
-import OneCauseDonationFormBlock from "@/components/blocks/onecause-donation-form";
+import SquareDonationFormBlock from "@/components/blocks/square-donation-form";
 import PersonListBlock from "@/components/blocks/person-list-block";
 import TextBlock from "@/components/blocks/text-block";
 import SiteFooter from "@/components/site-footer";
@@ -16,7 +16,6 @@ import {
 } from "@sanity/image-url/lib/types/types";
 import { notFound } from "next/navigation";
 import { metadata } from "@/app/layout";
-import { Person } from "@/components/section";
 import TwoColumnTextBlock from "@/components/blocks/two-column-text-block";
 import TwoColumnHeroBlock from "@/components/blocks/two-column-hero-block";
 
@@ -133,8 +132,6 @@ export default async function DynamicPage(props: PageProps) {
     page.sections.shift();
   }
 
-  console.log(page.sections);
-
   return (
     <>
       <TopNavHeader path={props.params.path} />
@@ -164,7 +161,7 @@ export default async function DynamicPage(props: PageProps) {
               case "twoColumnHeroBlock":
                 return <TwoColumnHeroBlock key={s._key} section={s} />;
               case "donationBlock":
-                return <OneCauseDonationFormBlock key={s._key} section={s} />;
+                return <SquareDonationFormBlock key={s._key} section={s} />;
               case "formEmbedBlock":
                 return <FormEmbedBlock key={s._key} section={s} />;
               case "personListBlock":

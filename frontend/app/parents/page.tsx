@@ -69,7 +69,7 @@ export default async function ParentResourcesPage() {
           <div className="border border-slate-300 shadow-md rounded-md p-4 md:p-8 mb-8">
             <h3 className="mb-4 text-4xl font-bold">Calendar</h3>
             <iframe
-              src="https://calendar.google.com/calendar/u/0/embed?src=en.usa%23holiday@group.v.calendar.google.com&ctz=America/Chicago"
+              src="https://outlook.office365.com/owa/calendar/e17014b3d3194bd28aeac7f6981e7637@smgschool.org/968a59748b1341389f01860bcc52b3694203663748153909325/calendar.html"
               height={600}
               width="100%"
             ></iframe>
