@@ -1,10 +1,16 @@
 "use server";
 
+import { PortableTextWithAddons } from "@/components/portable-text-with-addons";
 import SiteFooter from "@/components/site-footer";
-import { TopNavHeader } from "@/components/site-header";
+import { PUBLIC_CALENDAR_URL } from "@/lib/calendar";
+import { dateToCentralTime } from "@/lib/time";
 import { client } from "@/sanity";
+import { PortableTextBlock } from "next-sanity";
+import Link from "next/link";
 
 export default async function ParentResourcesPage() {
+  const today = new Date();
+  console.log(today.toISOString());
   const volunteerNeeds = await client.fetch<
     {
       _id: string;
@@ -13,63 +19,46 @@ export default async function ParentResourcesPage() {
       shortDescription?: string;
       signupUrl: string;
     }[]
-  >(`*[_type == 'volunteerNeed' && date > '2024-06-04' ] | order(date asc)`);
+  >(
+    `*[_type == 'volunteerNeed' && date > '${today.toISOString()}' ] | order(date asc)`
+  );
+
+  const parentNews = await client.fetch<
+    {
+      _id: string;
+      title: string;
+      date: string;
+      content: PortableTextBlock[];
+    }[]
+  >(`*[_type == 'parentNews'] | order(date desc)`);
 
   return (
     <>
-      <TopNavHeader path="/parents" />
       <div className="prose px-4 md:px-16">
         <h1>Parent Resources</h1>
       </div>
       <div className="grid p-4 md:p-8 gap-8 grid-cols-1 md:grid-cols-[3fr_1fr]">
         <div>
           <div className="border border-slate-300 shadow-md rounded-md p-4 md:p-8 mb-8">
-            <div className="prose">
-              <h3>Summer Info</h3>
-              <p>
-                We hope you and your family have a fun and relaxing summer!
-                Here’s some need-to-know information to keep in mind before
-                school starts again:
-              </p>
-              <h4>Summer Readings Lists</h4>
-              <p>All students have required reading over the summer.</p>
-              <ul>
-                <li>
-                  <a href="https://files.ecatholic.com/12396/documents/2024/5/PreK%20summer%20reading%20format.pdf?t=1716394244000">
-                    Pre-K Reading List
-                  </a>
-                </li>
-                <li>
-                  <a href="https://files.ecatholic.com/12396/documents/2024/5/PreK%20summer%20reading%20format.pdf?t=1716394244000">
-                    Kindergarten Reading List
-                  </a>
-                </li>
-                <li>
-                  <a href="https://files.ecatholic.com/12396/documents/2024/5/PreK%20summer%20reading%20format.pdf?t=1716394244000">
-                    First Grade Reading List
-                  </a>
-                </li>
-                <li>
-                  <a href="https://files.ecatholic.com/12396/documents/2024/5/PreK%20summer%20reading%20format.pdf?t=1716394244000">
-                    Second Grade Reading List
-                  </a>
-                </li>
-              </ul>
-              <h4>School Supplies</h4>
-              <p>
-                Unlike last year, you need to buy your own school supplies this
-                year. You still have the option to{" "}
-                <a href="https://schoolsuppliesco.com/collections/st-maria-goretti">
-                  buy all of the supplies in a single package from School
-                  Supplies Co.
-                </a>
-              </p>
-            </div>
+            {parentNews.map((n) => {
+              return (
+                <article className="prose mb-16" key={n._id}>
+                  <header className="mb-4">
+                    <h3 className="my-0">{n.title}</h3>
+                    <span>
+                      {dateToCentralTime(n.date).toLocaleDateString()}
+                    </span>
+                  </header>
+                  <PortableTextWithAddons value={n.content.slice(0, 1)} />
+                  <Link href={`/parents/news/${n._id}`}>Read more</Link>
+                </article>
+              );
+            })}
           </div>
           <div className="border border-slate-300 shadow-md rounded-md p-4 md:p-8 mb-8">
-            <h3 className="mb-4 text-4xl font-bold">Calendar</h3>
+            <h3 className="mt-0 mb-4 text-4xl font-bold">Calendar</h3>
             <iframe
-              src="https://outlook.office365.com/owa/calendar/e17014b3d3194bd28aeac7f6981e7637@smgschool.org/968a59748b1341389f01860bcc52b3694203663748153909325/calendar.html"
+              src={PUBLIC_CALENDAR_URL}
               height={600}
               width="100%"
             ></iframe>
@@ -77,7 +66,7 @@ export default async function ParentResourcesPage() {
         </div>
         <div>
           <div className="border border-slate-300 shadow-md rounded-md p-4 md:p-8 mb-8">
-            <a href="https://familyportal.renweb.com/">
+            <a href="https://familyportal.renweb.com/" target="_blank">
               <button className="bg-sky-500 hover:bg-sky-600 text-white transition-colors py-2 px-8 block w-full rounded-md">
                 Log in to RenWeb
               </button>
@@ -88,13 +77,18 @@ export default async function ParentResourcesPage() {
             <div className="prose">
               <h4>Volunteer</h4>
             </div>
+            {volunteerNeeds.length === 0 && (
+              <p>
+                <em>No upcoming volunteer needs</em>
+              </p>
+            )}
             <ul>
               {volunteerNeeds.map((v) => {
                 return (
                   <li key={v._id} className="mb-4">
                     <div>
                       <strong>{v.title}</strong>:{" "}
-                      {new Date(v.date).toLocaleDateString()}
+                      {dateToCentralTime(v.date).toLocaleDateString()}
                     </div>
                     {v.shortDescription && (
                       <div className="text-sm mb-2">{v.shortDescription}</div>

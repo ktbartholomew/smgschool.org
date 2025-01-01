@@ -13,6 +13,7 @@ import {person} from './documents/person'
 import {personListBlock} from './personListBlock'
 import {twoColumnHeroBlock} from './twoColumnHeroBlock'
 import {twoColumnTextBlock} from './twoColumnTextBlock'
+import {parentNews} from './documents/parentNews'
 
 export const schemaTypes = [
   cta,
@@ -29,5 +30,6 @@ export const schemaTypes = [
   personListBlock,
   eyebrowNavLink,
   volunteerNeed,
+  parentNews,
   mainNavLink,
 ]

@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { SmgSchoolLogo } from "./logo";
 import "./site-footer.css";
+import { PUBLIC_CALENDAR_URL } from "@/lib/calendar";
 
 export default async function SiteFooter() {
   return (
@@ -115,10 +116,7 @@ export default async function SiteFooter() {
             <h3>Parents</h3>
             <ul className="list-none">
               <li>
-                <Link
-                  href="https://calendar.google.com/calendar/embed?src=en.usa%23holiday%40group.v.calendar.google.com&ctz=America%2FChicago"
-                  target="_blank"
-                >
+                <Link href={PUBLIC_CALENDAR_URL} target="_blank">
                   Calendar
                 </Link>
               </li>

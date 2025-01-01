@@ -18,7 +18,7 @@ export default async function Home() {
       <main className="">
         <HeroBlock section={page.sections[0]} className="h-[80vh]" />
         <TwoColumnHeroBlock section={page.sections[1]} />
-        <div className="h-[80vh] relative">
+        {/* <div className="h-[80vh] relative">
           <div className="overflow-hidden">
             <img
               className="absolute block h-full w-full object-cover object-center -z-20"
@@ -46,7 +46,7 @@ export default async function Home() {
               </Link>
             </div>
           </div>
-        </div>
+        </div> */}
       </main>
       <SiteFooter />
     </>
