@@ -56,6 +56,35 @@ export async function TopNavHeader({ path }: { path?: string }) {
         </nav>
 
         <MainNavList links={mainNavLinks} />
+        {urlPath.startsWith("/parents") && (
+          <div className="bg-brand-primary-700 text-white text-sm md:px-16">
+            <ul className="m-0 p-0 list-none flex">
+              <li>
+                <Link href="/parents/documents" className={eyebrowLinkClass}>
+                  Documents
+                </Link>
+              </li>
+              <li>
+                <Link href="/parents/lunch" className={eyebrowLinkClass}>
+                  Lunch
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/parents/athletics-clubs"
+                  className={eyebrowLinkClass}
+                >
+                  Sports &amp; Clubs
+                </Link>
+              </li>
+              <li>
+                <Link href="/parents/volunteer" className={eyebrowLinkClass}>
+                  Volunteer
+                </Link>
+              </li>
+            </ul>
+          </div>
+        )}
       </header>
     </>
   );

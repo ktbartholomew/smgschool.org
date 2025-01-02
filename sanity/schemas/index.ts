@@ -14,6 +14,7 @@ import {personListBlock} from './personListBlock'
 import {twoColumnHeroBlock} from './twoColumnHeroBlock'
 import {twoColumnTextBlock} from './twoColumnTextBlock'
 import {parentNews} from './documents/parentNews'
+import {parentDocument} from './documents/parentDocument'
 
 export const schemaTypes = [
   cta,
@@ -31,5 +32,6 @@ export const schemaTypes = [
   eyebrowNavLink,
   volunteerNeed,
   parentNews,
+  parentDocument,
   mainNavLink,
 ]

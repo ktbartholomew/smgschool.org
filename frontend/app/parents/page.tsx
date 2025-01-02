@@ -10,7 +10,6 @@ import Link from "next/link";
 
 export default async function ParentResourcesPage() {
   const today = new Date();
-  console.log(today.toISOString());
   const volunteerNeeds = await client.fetch<
     {
       _id: string;
@@ -22,6 +21,18 @@ export default async function ParentResourcesPage() {
   >(
     `*[_type == 'volunteerNeed' && date > '${today.toISOString()}' ] | order(date asc)`
   );
+
+  const documents = await client.fetch<
+    {
+      _id: string;
+      title: string;
+      documentUrl: string;
+    }[]
+  >(`*[_type == 'parentDocument'] | order(title desc) {
+  _id,
+  title,
+  "documentUrl": document.asset->url
+}`);
 
   const parentNews = await client.fetch<
     {
@@ -39,10 +50,13 @@ export default async function ParentResourcesPage() {
       </div>
       <div className="grid p-4 md:p-8 gap-8 grid-cols-1 md:grid-cols-[3fr_1fr]">
         <div>
-          <div className="border border-slate-300 shadow-md rounded-md p-4 md:p-8 mb-8">
-            {parentNews.map((n) => {
-              return (
-                <article className="prose mb-16" key={n._id}>
+          {parentNews.map((n) => {
+            return (
+              <div
+                key={n._id}
+                className="border border-slate-300 shadow-md rounded-md p-4 md:p-8 mb-8"
+              >
+                <article className="prose">
                   <header className="mb-4">
                     <h3 className="my-0">{n.title}</h3>
                     <span>
@@ -52,9 +66,9 @@ export default async function ParentResourcesPage() {
                   <PortableTextWithAddons value={n.content.slice(0, 1)} />
                   <Link href={`/parents/news/${n._id}`}>Read more</Link>
                 </article>
-              );
-            })}
-          </div>
+              </div>
+            );
+          })}
           <div className="border border-slate-300 shadow-md rounded-md p-4 md:p-8 mb-8">
             <h3 className="mt-0 mb-4 text-4xl font-bold">Calendar</h3>
             <iframe
@@ -131,12 +145,13 @@ export default async function ParentResourcesPage() {
             <div className="prose">
               <h4>Documents</h4>
               <ul>
-                <li>
-                  <a href="/">2024-2025 School Calendar</a>
-                </li>
-                <li>
-                  <a href="/">2024-2025 School Handbook</a>
-                </li>
+                {documents.map((d) => (
+                  <li key={d._id}>
+                    <a href={d.documentUrl} target="_blank">
+                      {d.title}
+                    </a>
+                  </li>
+                ))}
               </ul>
             </div>
           </div>

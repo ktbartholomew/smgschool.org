@@ -27,7 +27,6 @@ export default defineConfig({
               slug: 'slug.current',
             },
             resolve: (doc) => {
-              console.log(doc)
               return {
                 locations: [
                   {
