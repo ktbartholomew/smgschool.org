@@ -1,23 +1,7 @@
 "use server";
 
 import { PortableText, PortableTextBlock } from "@portabletext/react";
-import Image from "next/image";
-import { client } from "@/sanity";
-import imageUrl from "@sanity/image-url";
-
-async function IImage(props: any) {
-  const builder = imageUrl(client);
-  const image = builder.image(props.value);
-
-  return (
-    <Image
-      src={image.url()}
-      alt={props.value.caption ?? "image"}
-      width={800}
-      height={800}
-    />
-  );
-}
+import { PortableTextWithAddons } from "../portable-text-with-addons";
 
 export default async function TwoColumnHeroBlock(props: {
   section: { column1: PortableTextBlock[]; column2: PortableTextBlock[] };
@@ -32,10 +16,7 @@ export default async function TwoColumnHeroBlock(props: {
           <PortableText value={props.section.column1} />
         </div>
         <div>
-          <PortableText
-            value={props.section.column2}
-            components={{ types: { image: IImage } }}
-          />
+          <PortableTextWithAddons value={props.section.column2} />
         </div>
       </div>
     </section>
