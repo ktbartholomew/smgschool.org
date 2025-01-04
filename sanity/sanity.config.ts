@@ -5,7 +5,8 @@ import {schemaTypes} from './schemas'
 import {media} from 'sanity-plugin-media'
 import {defineLocations, presentationTool} from 'sanity/presentation'
 
-const SANITY_STUDIO_PREVIEW_URL = process.env.SANITY_STUDIO_PREVIEW_URL || 'http://localhost:3000'
+const SANITY_STUDIO_PREVIEW_ORIGIN =
+  process.env.SANITY_STUDIO_PREVIEW_ORIGIN || 'http://localhost:3000'
 
 export default defineConfig({
   name: 'default',
@@ -39,7 +40,13 @@ export default defineConfig({
           }),
         },
       },
-      previewUrl: SANITY_STUDIO_PREVIEW_URL,
+      previewUrl: {
+        origin: SANITY_STUDIO_PREVIEW_ORIGIN,
+        preview: '/',
+        previewMode: {
+          enable: '/api/draft-mode/enable',
+        },
+      },
     }),
   ],
 

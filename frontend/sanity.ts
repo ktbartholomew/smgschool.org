@@ -12,4 +12,7 @@ export const client = createClient({
       revalidate: 600,
     },
   },
+  stega: {
+    studioUrl: process.env.NEXT_PUBLIC_SANITY_STUDIO_URL,
+  },
 });

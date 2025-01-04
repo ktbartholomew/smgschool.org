@@ -40,6 +40,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         {children}
+        {draftMode().isEnabled && "DraftModeEnabled"}
         {draftMode().isEnabled && <VisualEditing />}
         <Ga gaId="G-WW9E92XGYR" />
       </body>
