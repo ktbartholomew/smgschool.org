@@ -1,6 +1,6 @@
 "use server";
 
-import { PageProps } from "@/.next/types/app/[...path]/page";
+import { PageProps } from "@/.next/types/app/page";
 import FormEmbedBlock from "@/components/blocks/form-embed-block";
 import HeroBlock from "@/components/blocks/hero-block";
 import SquareDonationFormBlock from "@/components/blocks/square-donation-form";
@@ -113,6 +113,10 @@ export async function generateMetadata(props: PageProps) {
   const page = await getPage(props);
 
   return {
+    headers: {
+      "Vercel-CDN-Cache-Control": "max-age=360",
+      "Cache-Control": "public, max-age=60",
+    },
     title: [page.seoTitle || page.title || undefined, metadata.title].join(
       " | "
     ),

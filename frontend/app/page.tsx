@@ -5,7 +5,6 @@ import TwoColumnHeroBlock from "@/components/blocks/two-column-hero-block";
 import SiteFooter from "@/components/site-footer";
 import { TopNavHeader } from "@/components/site-header";
 import { client } from "@/sanity";
-import Link from "next/link";
 
 export default async function Home() {
   const page = (
