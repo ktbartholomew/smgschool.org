@@ -113,10 +113,6 @@ export async function generateMetadata(props: PageProps) {
   const page = await getPage(props);
 
   return {
-    headers: {
-      "Vercel-CDN-Cache-Control": "max-age=360",
-      "Cache-Control": "public, max-age=60",
-    },
     title: [page.seoTitle || page.title || undefined, metadata.title].join(
       " | "
     ),
