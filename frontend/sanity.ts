@@ -13,6 +13,7 @@ export const client = createClient({
     },
   },
   stega: {
-    studioUrl: process.env.NEXT_PUBLIC_SANITY_STUDIO_URL,
+    studioUrl:
+      process.env.NEXT_PUBLIC_SANITY_STUDIO_URL ?? "http://localhost:3333",
   },
 });
