@@ -13,6 +13,7 @@ export default async function HeroBlock(props: {
   section: {
     _key: string;
     title?: string;
+    subtitle?: string;
     cta?: { _key: string; label: string; link: string }[];
     image?: SanityImageSource & SanityImageObject & { lqip?: string };
     images?: (SanityImageSource & SanityImageObject & { lqip?: string })[];
@@ -71,10 +72,13 @@ export default async function HeroBlock(props: {
       <div
         className={`absolute h-full w-full ${colorOverlayClass} mix-blend-multiply`}
       ></div>
-      <div className="absolute h-full w-full flex flex-wrap items-center content-center gap-8 justify-center">
+      <div className="absolute h-full w-full flex flex-col items-center content-center gap-8 justify-center">
         <h1 className="font-black text-center text-white tracking-tight text-5xl md:text-8xl text-balance drop-shadow-lg-strong  z-20">
           {props.section.title}
         </h1>
+        <div className="text-center text-white text-2xl md:text-3xl text-balance max-w-prose -mt-12 mb-8">
+          {props.section.subtitle}
+        </div>
         <div>
           {props.section.cta?.map((cta) => (
             <a key={cta._key} href={cta.link}>

@@ -8,11 +8,9 @@ export default async function TwoColumnHeroBlock(props: {
   className?: string;
 }) {
   return (
-    <section
-      className={`px-4 py-16 md:py-32 md:px-16 prose hero ${props.className}`}
-    >
+    <section className={` prose hero ${props.className}`}>
       <div className="grid md:grid-cols-2 items-center gap-4 md:gap-8">
-        <div>
+        <div className="px-4 py-16 md:py-32 md:px-16">
           <PortableText value={props.section.column1} />
         </div>
         <div>

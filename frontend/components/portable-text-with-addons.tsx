@@ -72,26 +72,11 @@ export async function PortableTextWithAddons(props: {
               <Image
                 src={src.url()}
                 alt={image.value.caption ?? ""}
-                width={800}
-                height={800}
+                width={1000}
+                height={1000}
               />
             );
           },
-
-          // fileEmbed: (props: {
-          //   value: { name: string; file: SanityFileAsset };
-          // }) => {
-          //   const asset = getFileAsset(props.value.file, {
-          //     projectId: client.config().projectId,
-          //     dataset: client.config().dataset,
-          //   });
-
-          //   return (
-          //     <a href={asset.url} target="_blank" rel="noreferrer">
-          //       {props.value.name}
-          //     </a>
-          //   );
-          // },
         },
       }}
     />
