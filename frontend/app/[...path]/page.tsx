@@ -102,7 +102,9 @@ async function getPage(props: PageProps) {
       }
     }
   }
-}`
+}`,
+    {},
+    { next: { revalidate: 60 } }
   );
 
   if (pages.length === 0) {
@@ -111,8 +113,6 @@ async function getPage(props: PageProps) {
 
   return pages[0];
 }
-
-export const revalidate = 60;
 
 export async function generateStaticParams(): Promise<{ path: string[] }[]> {
   const pages = await client.fetch<{ slug: { current: string } }[]>(

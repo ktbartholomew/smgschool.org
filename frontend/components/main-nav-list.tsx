@@ -23,11 +23,11 @@ export function MainNavList(props: { urlPath?: string; links: TNavLink[] }) {
           <HamburgerIcon />
         </button>
         <div className="flex gap-4 items-center p-2">
-          <a href="/">
+          <Link href="/">
             {/* Alternatively, we could render a single logo and make its size media-query-aware */}
             <SmgSchoolLogo className="md:hidden" inverse size={64} />
             <SmgSchoolLogo className="hidden md:block" inverse size={100} />
-          </a>
+          </Link>
           <h2 className="text-2xl font-semibold m-0 hidden lg:block text-balance">
             Saint Maria Goretti Catholic School
           </h2>

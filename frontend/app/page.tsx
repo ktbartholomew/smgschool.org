@@ -9,7 +9,9 @@ import { draftModeClient } from "@/lib/sanity/draft-mode-client";
 export default async function Home() {
   const page = (
     await draftModeClient().fetch(
-      `*[_type == 'page' && slug.current == '/_home']`
+      `*[_type == 'page' && slug.current == '/_home']`,
+      {},
+      { next: { revalidate: 60 } }
     )
   )[0];
 

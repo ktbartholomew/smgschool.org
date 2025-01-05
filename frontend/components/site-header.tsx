@@ -32,7 +32,9 @@ export async function TopNavHeader({ path }: { path?: string }) {
         url,
         page->{_id, title, slug}
       }
-    } | order(order asc)`
+    } | order(order asc)`,
+    {},
+    { next: { revalidate: 60 } }
   );
 
   return (
