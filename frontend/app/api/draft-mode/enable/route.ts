@@ -1,5 +1,3 @@
-// src/app/api/draft-mode/enable/route.ts
-
 import { client } from "@/sanity";
 import { defineEnableDraftMode } from "next-sanity/draft-mode";
 

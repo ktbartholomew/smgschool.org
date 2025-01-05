@@ -1,10 +1,10 @@
 "use server";
 
-import { client } from "@/sanity";
 import { StickyLogo } from "./sticky-logo";
 import Link from "next/link";
 import { TNavLink } from "./main-nav-link";
 import { MainNavList } from "./main-nav-list";
+import { draftModeClient } from "@/lib/sanity/draft-mode-client";
 
 export async function TopNavHeader({ path }: { path?: string }) {
   const urlPath = `/${path ?? ""}`;
@@ -12,7 +12,7 @@ export async function TopNavHeader({ path }: { path?: string }) {
   const eyebrowLinkClass =
     "px-6 py-2 block text-white no-underline hover:bg-brand-primary transition-colors";
 
-  const eyebrowNavLinks = await client.fetch<
+  const eyebrowNavLinks = await draftModeClient().fetch<
     {
       _id: string;
       _createdAt: string;
@@ -23,7 +23,7 @@ export async function TopNavHeader({ path }: { path?: string }) {
     }[]
   >(`*[_type == 'eyebrowNavLink' ] | order(order asc)`);
 
-  const mainNavLinks = await client.fetch<TNavLink[]>(
+  const mainNavLinks = await draftModeClient().fetch<TNavLink[]>(
     `*[_type == 'mainNavLink' ]{
       ..., 
       page->{_id, title, slug}, 

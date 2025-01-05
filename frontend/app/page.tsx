@@ -4,11 +4,13 @@ import HeroBlock from "@/components/blocks/hero-block";
 import TwoColumnHeroBlock from "@/components/blocks/two-column-hero-block";
 import SiteFooter from "@/components/site-footer";
 import { TopNavHeader } from "@/components/site-header";
-import { client } from "@/sanity";
+import { draftModeClient } from "@/lib/sanity/draft-mode-client";
 
 export default async function Home() {
   const page = (
-    await client.fetch(`*[_type == 'page' && slug.current == '/_home']`)
+    await draftModeClient().fetch(
+      `*[_type == 'page' && slug.current == '/_home']`
+    )
   )[0];
 
   return (

@@ -1,16 +1,15 @@
 "use server";
 
 import { PortableTextWithAddons } from "@/components/portable-text-with-addons";
-import SiteFooter from "@/components/site-footer";
 import { PUBLIC_CALENDAR_URL } from "@/lib/calendar";
+import { draftModeClient } from "@/lib/sanity/draft-mode-client";
 import { dateToCentralTime } from "@/lib/time";
-import { client } from "@/sanity";
 import { PortableTextBlock } from "next-sanity";
 import Link from "next/link";
 
 export default async function ParentResourcesPage() {
   const today = new Date();
-  const volunteerNeeds = await client.fetch<
+  const volunteerNeeds = await draftModeClient().fetch<
     {
       _id: string;
       title: string;
@@ -22,19 +21,21 @@ export default async function ParentResourcesPage() {
     `*[_type == 'volunteerNeed' && date > '${today.toISOString()}' ] | order(date asc)`
   );
 
-  const documents = await client.fetch<
+  const documents = await draftModeClient().fetch<
     {
       _id: string;
       title: string;
       documentUrl: string;
     }[]
-  >(`*[_type == 'parentDocument'] | order(title desc) {
+  >(
+    `*[_type == 'parentDocument'] | order(title desc) {
   _id,
   title,
   "documentUrl": document.asset->url
-}`);
+}`
+  );
 
-  const parentNews = await client.fetch<
+  const parentNews = await draftModeClient().fetch<
     {
       _id: string;
       title: string;
@@ -157,8 +158,6 @@ export default async function ParentResourcesPage() {
           </div>
         </div>
       </div>
-
-      <SiteFooter />
     </>
   );
 }

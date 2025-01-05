@@ -2,12 +2,12 @@
 
 import { PageProps } from "@/.next/types/app/parents/news/[newsItem]/page";
 import { PortableTextWithAddons } from "@/components/portable-text-with-addons";
+import { draftModeClient } from "@/lib/sanity/draft-mode-client";
 import { dateToCentralTime } from "@/lib/time";
-import { client } from "@/sanity";
 import Link from "next/link";
 
 export default async function ParentNewsItemPage(props: PageProps) {
-  const newsItems = await client.fetch(
+  const newsItems = await draftModeClient().fetch(
     `
         *[_type == 'parentNews' && _id == $id]
         `,

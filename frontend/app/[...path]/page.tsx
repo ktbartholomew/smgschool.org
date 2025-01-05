@@ -18,7 +18,7 @@ import { notFound } from "next/navigation";
 import { metadata } from "@/app/layout";
 import TwoColumnTextBlock from "@/components/blocks/two-column-text-block";
 import TwoColumnHeroBlock from "@/components/blocks/two-column-hero-block";
-import { draftMode } from "next/headers";
+import { draftModeClient } from "@/lib/sanity/draft-mode-client";
 
 type Page = {
   _id: string;
@@ -80,7 +80,7 @@ type Page = {
 };
 
 async function getPage(props: PageProps) {
-  const pages = await client.fetch<Page[]>(
+  const pages = await draftModeClient().fetch<Page[]>(
     `
 *[
   _type == 'page' && slug.current == '/${props.params.path.join("/")}'
@@ -102,15 +102,7 @@ async function getPage(props: PageProps) {
       }
     }
   }
-}`,
-    {},
-    draftMode().isEnabled
-      ? {
-          perspective: "previewDrafts",
-          useCdn: false,
-          stega: true,
-        }
-      : {}
+}`
   );
 
   if (pages.length === 0) {

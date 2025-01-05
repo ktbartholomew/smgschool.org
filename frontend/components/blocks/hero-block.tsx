@@ -1,6 +1,5 @@
 "use server";
 
-import { client } from "@/sanity";
 import imageUrl from "@sanity/image-url";
 import {
   SanityImageObject,
@@ -8,6 +7,7 @@ import {
 } from "@sanity/image-url/lib/types/types";
 import { LazyHeroImage } from "../lazy-hero-image";
 import { Slideshow } from "../slideshow";
+import { draftModeClient } from "@/lib/sanity/draft-mode-client";
 
 export default async function HeroBlock(props: {
   section: {
@@ -22,7 +22,7 @@ export default async function HeroBlock(props: {
   };
   className?: string;
 }) {
-  const builder = imageUrl(client);
+  const builder = imageUrl(draftModeClient());
 
   let colorOverlayClass = "";
   switch (props.section.colorOverlay) {
