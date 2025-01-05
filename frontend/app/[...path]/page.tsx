@@ -112,6 +112,8 @@ async function getPage(props: PageProps) {
   return pages[0];
 }
 
+export const revalidate = 60;
+
 export async function generateStaticParams(): Promise<{ path: string[] }[]> {
   const pages = await client.fetch<{ slug: { current: string } }[]>(
     `*[_type == 'page']{slug}`
