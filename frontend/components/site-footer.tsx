@@ -3,9 +3,51 @@
 import Link from "next/link";
 import { SmgSchoolLogo } from "./logo";
 import "./site-footer.css";
-import { PUBLIC_CALENDAR_URL } from "@/lib/calendar";
+import { draftModeClient } from "@/lib/sanity/draft-mode-client";
+import { TNavLink } from "./main-nav-link";
+
+const ContactInfo = {
+  name: "Saint Maria Goretti Catholic School",
+  mapUrl: "https://maps.app.goo.gl/pRNVCy2cNKkBUgQt7",
+  address: (
+    <>
+      1200 S. Davis Drive
+      <br />
+      Arlington, TX 76013
+    </>
+  ),
+  phone: "817-275-5081",
+  email: "secretary@smgschool.org",
+};
 
 export default async function SiteFooter() {
+  const [eyebrowNavLinks, navLinks] = await Promise.all([
+    draftModeClient().fetch<
+      {
+        _id: string;
+        _createdAt: string;
+        _updatedAt: string;
+        text: string;
+        url: string;
+        newTab: boolean;
+      }[]
+    >(`*[_type == 'eyebrowNavLink' ] | order(order asc)`),
+    draftModeClient().fetch<TNavLink[]>(
+      `*[_type == 'mainNavLink' ]{
+      ...,
+      page->{_id, title, slug},
+      secondaryLinks[]{
+        _id,
+        title,
+        url,
+        page->{_id, title, slug}
+      }
+    } | order(order asc)`,
+      {},
+      { next: { revalidate: 60 } }
+    ),
+  ]);
+
   return (
     <footer className="site-footer p-4 md:p-16">
       <div className="flex flex-wrap gap-8">
@@ -14,125 +56,64 @@ export default async function SiteFooter() {
             <SmgSchoolLogo />
           </div>
           <p className="mb-2">
-            <strong className="text-lg">
-              Saint Maria Goretti Catholic School
-            </strong>
+            <strong className="text-lg">{ContactInfo.name}</strong>
           </p>
-          <address>
+          <address className="not-italic">
             <p className="mb-2">
               <a
-                href="https://maps.app.goo.gl/pRNVCy2cNKkBUgQt7"
+                href={ContactInfo.mapUrl}
                 target="_blank"
                 rel="nofollow noreferrer"
               >
-                1200 S. Davis Drive
-                <br /> Arlington, TX 76013
-              </a>
-            </p>
-            <p className="mb-2">
-              <a href="tel:+18172755081">817-275-5081</a>
-            </p>
-            <p className="mb-0">
-              <a href="mailto:secretary@smgschool.org">
-                secretary@smgschool.org
+                {ContactInfo.address}
               </a>
             </p>
           </address>
+          <p className="mb-2">
+            <a href={`tel:+1${ContactInfo.phone.replace(/[^\d]/g, "")}`}>
+              {ContactInfo.phone}
+            </a>
+          </p>
+          <p className="mb-0">
+            <a href={`mailto:${ContactInfo.email}`}>{ContactInfo.email}</a>
+          </p>
         </div>
         <div className="grid flex-grow lg:grid-cols-4 gap-8 gap-y-16">
+          {navLinks.map((navLink) => (
+            <div key={navLink._id} className="footer-column">
+              <h3>
+                <Link href={navLink.page?.slug.current ?? "/"}>
+                  {navLink.title}
+                </Link>
+              </h3>
+              <ul className="list-none">
+                {navLink.secondaryLinks?.map((secondaryLink) => (
+                  <li key={secondaryLink._id}>
+                    <Link href={secondaryLink.page?.slug.current ?? "/"}>
+                      {secondaryLink.title ?? secondaryLink.page?.title}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+
           <div className="footer-column">
             <h3>
-              <Link href="/about">About</Link>
+              <Link href="/parents">Parent Resources</Link>
             </h3>
             <ul className="list-none">
-              <li>
-                <Link href="/about/faculty-and-staff">Faculty & Staff</Link>
-              </li>
-              <li>
-                <Link href="/about/employment">Employment</Link>
-              </li>
-              <li>
-                <Link href="/about/contact">Contact Us</Link>
-              </li>
-            </ul>
-          </div>
-          <div className="footer-column">
-            <h3>
-              <Link href="/admissions">Admissions</Link>
-            </h3>
-            <ul className="list-none">
-              <li>
-                <Link href="/admissions/tour">Schedule a Tour</Link>
-              </li>
-              <li>
-                <Link href="/admissions/process">Enrollment Process</Link>
-              </li>
-              <li>
-                <Link href="/admissions/apply">Apply Today</Link>
-              </li>
-              <li>
-                <Link href="/admissions/financial-aid">Financial Aid</Link>
-              </li>
-            </ul>
-          </div>
-          <div className="footer-column">
-            <h3>
-              <Link href="/academics">Academics</Link>
-            </h3>
-            <ul className="list-none">
-              <li>
-                <Link href="/academics/programs">Programs</Link>
-              </li>
-              <li>
-                <Link href="/academics/classical-education">
-                  Classical Education
-                </Link>
-              </li>
-              <li>
-                <Link href="/academics/faith-families">Faith Families</Link>
-              </li>
-              <li>
-                <Link href="/academics/extracurriculars">Extracurriculars</Link>
-              </li>
-            </ul>
-          </div>
-          <div className="footer-column">
-            <h3>
-              <Link href="/support-us">Support Us</Link>
-            </h3>
-            <ul className="list-none">
-              <li>
-                <Link href="/support-us/volunteer">Volunteer</Link>
-              </li>
-              <li>
-                <Link href="/support/donate">Donate</Link>
-              </li>
-              <li>
-                <Link href="/support/sponsors">Our Sponsors</Link>
-              </li>
-            </ul>
-          </div>
-          <div className="footer-column">
-            <h3>Parents</h3>
-            <ul className="list-none">
-              <li>
-                <Link href={PUBLIC_CALENDAR_URL} target="_blank">
-                  Calendar
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="https://secure.smore.com/n/qtxs7-the-trojan-times"
-                  target="_blank"
-                >
-                  Weekly Newsletter
-                </Link>
-              </li>
-              <li>
-                <Link href="https://familyportal.renweb.com/" target="_blank">
-                  RenWeb
-                </Link>
-              </li>
+              {eyebrowNavLinks.map((link, idx) => (
+                <li key={link._id}>
+                  <Link
+                    href={link.url}
+                    target={link.newTab ? "_blank" : "_self"}
+                    rel={link.newTab ? "nofollow noreferrer" : ""}
+                  >
+                    {link.text}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
         </div>

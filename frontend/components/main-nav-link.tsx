@@ -53,12 +53,12 @@ export function MainNavLink({
           " text-white text-base md:absolute md:z-30 md:bg-brand-primary-600 m-0 list-none p-0"
         }
       >
-        {link.secondaryLinks?.map((slink, idx) => {
+        {link.secondaryLinks?.map((slink) => {
           const title = slink.page?.title ?? slink.title;
           const href =
             (slink.page ? slink.page?.slug.current : slink.url) ?? "";
           return (
-            <li key={idx}>
+            <li key={slink._id}>
               <Link
                 className="block p-4 text-white no-underline hover:underline"
                 href={href}

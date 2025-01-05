@@ -12,30 +12,32 @@ export async function TopNavHeader({ path }: { path?: string }) {
   const eyebrowLinkClass =
     "px-6 py-2 block text-white no-underline hover:bg-brand-primary transition-colors";
 
-  const eyebrowNavLinks = await draftModeClient().fetch<
-    {
-      _id: string;
-      _createdAt: string;
-      _updatedAt: string;
-      text: string;
-      url: string;
-      newTab: boolean;
-    }[]
-  >(`*[_type == 'eyebrowNavLink' ] | order(order asc)`);
-
-  const mainNavLinks = await draftModeClient().fetch<TNavLink[]>(
-    `*[_type == 'mainNavLink' ]{
+  const [eyebrowNavLinks, mainNavLinks] = await Promise.all([
+    draftModeClient().fetch<
+      {
+        _id: string;
+        _createdAt: string;
+        _updatedAt: string;
+        text: string;
+        url: string;
+        newTab: boolean;
+      }[]
+    >(`*[_type == 'eyebrowNavLink' ] | order(order asc)`),
+    draftModeClient().fetch<TNavLink[]>(
+      `*[_type == 'mainNavLink' ]{
       ..., 
       page->{_id, title, slug}, 
       secondaryLinks[]{
+        _id,
         title,
         url,
         page->{_id, title, slug}
       }
     } | order(order asc)`,
-    {},
-    { next: { revalidate: 60 } }
-  );
+      {},
+      { next: { revalidate: 60 } }
+    ),
+  ]);
 
   return (
     <>
