@@ -12,7 +12,7 @@ export function Slideshow({ images }: { images: SanityImageObject[] }) {
     setTimeout(() => {
       setActiveIndex((activeIndex + 1) % images.length);
     }, 3000);
-  }, [activeIndex]);
+  }, [activeIndex, images.length]);
 
   const builder = imageUrl(client);
 
