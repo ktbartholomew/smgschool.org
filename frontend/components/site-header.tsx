@@ -61,8 +61,8 @@ export async function TopNavHeader({ path }: { path?: string }) {
 
         <MainNavList links={mainNavLinks} />
         {urlPath.startsWith("/parents") && (
-          <div className="bg-brand-primary-700 text-white text-sm md:px-16">
-            <ul className="m-0 p-0 list-none flex">
+          <div className="bg-brand-primary-700 text-white text-sm md:px-16 overflow-x-auto">
+            <ul className="m-0 p-0 list-none flex whitespace-nowrap">
               <li>
                 <Link href="/parents/documents" className={eyebrowLinkClass}>
                   Documents
