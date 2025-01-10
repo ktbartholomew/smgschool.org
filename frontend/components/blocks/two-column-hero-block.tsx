@@ -7,14 +7,26 @@ export default async function TwoColumnHeroBlock(props: {
   section: { column1: PortableTextBlock[]; column2: PortableTextBlock[] };
   className?: string;
 }) {
+  const onlyImageColumn1 =
+    props.section.column1?.length === 1 &&
+    props.section.column1[0]._type === "image";
+
+  const onlyImageColumn2 =
+    props.section.column2?.length === 1 &&
+    props.section.column2[0]._type === "image";
+
+  const proseColumnClasses = "p-8";
+
   return (
-    <section className={` prose hero ${props.className}`}>
-      <div className="grid md:grid-cols-2 items-center gap-4 md:gap-8">
-        <div className="px-4 py-16 md:py-32 md:px-16">
-          <PortableText value={props.section.column1} />
+    <section className={`prose hero ${props.className ? props.className : ""}`}>
+      <div className="grid md:grid-cols-2 items-stretch">
+        <div className={onlyImageColumn1 ? "" : proseColumnClasses}>
+          <PortableTextWithAddons value={props.section.column1} />
         </div>
         <div>
-          <PortableTextWithAddons value={props.section.column2} />
+          <div className={onlyImageColumn2 ? "" : proseColumnClasses}>
+            <PortableTextWithAddons value={props.section.column2} />
+          </div>
         </div>
       </div>
     </section>

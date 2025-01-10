@@ -66,11 +66,15 @@ export async function PortableTextWithAddons(props: {
           image: (image: {
             value: SanityImageObject & { caption?: string };
           }) => {
+            if (!image.value.asset) {
+              return null;
+            }
+
             const src = builder.image(image.value);
 
             return (
               <Image
-                src={src.url()}
+                src={src?.url()}
                 alt={image.value.caption ?? ""}
                 width={1000}
                 height={1000}
