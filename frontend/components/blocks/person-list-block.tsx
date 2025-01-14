@@ -5,8 +5,7 @@ import imageUrl from "@sanity/image-url";
 import Image from "next/image";
 import { Person } from "../section";
 
-const DEFAULT_EMPLOYEE_IMAGE =
-  "https://cdn.sanity.io/images/e6jjrj2e/production/b003a206b9ea85383503c721f4c11d6fdfa2d6f2-500x500.jpg";
+const DEFAULT_EMPLOYEE_IMAGE = `https://cdn.sanity.io/images/${client.config().projectId}/${client.config().dataset}/b003a206b9ea85383503c721f4c11d6fdfa2d6f2-500x500.jpg`;
 
 export default async function PersonListBlock(props: {
   section: {

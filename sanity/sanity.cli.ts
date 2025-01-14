@@ -1,9 +1,9 @@
 import {defineCliConfig} from 'sanity/cli'
 
 export default defineCliConfig({
-  studioHost: 'smgschool-org-e6jjrj2e',
+  studioHost: 'smgschool-org-yqyo9yvq',
   api: {
-    projectId: 'e6jjrj2e',
+    projectId: 'yqyo9yvq',
     dataset: 'production',
   },
 })

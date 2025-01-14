@@ -19,6 +19,13 @@ const nextConfig = {
       },
     ],
   },
+  redirects: async () => [
+    {
+      source: "/edit",
+      destination: "https://smgschool-org-yqyo9yvq.sanity.studio/",
+      permanent: false,
+    },
+  ],
 };
 
 export default nextConfig;
