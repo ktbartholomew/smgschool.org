@@ -19,6 +19,7 @@ import { metadata } from "@/app/layout";
 import TwoColumnTextBlock from "@/components/blocks/two-column-text-block";
 import TwoColumnHeroBlock from "@/components/blocks/two-column-hero-block";
 import { draftModeClient } from "@/lib/sanity/draft-mode-client";
+import { PortableTextWithAddons } from "@/components/portable-text-with-addons";
 
 type Page = {
   _id: string;
@@ -196,7 +197,7 @@ export default async function DynamicPage(props: PageProps) {
                   className="border border-slate-300 shadow-md rounded-md p-8 mb-8"
                 >
                   <div className="prose">
-                    <PortableText value={s.content} />
+                    <PortableTextWithAddons value={s.content} />
                   </div>
                 </section>
               );

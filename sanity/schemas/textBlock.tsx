@@ -24,7 +24,16 @@ export const textBlock = defineType({
                 type: 'object',
                 icon: LinkIcon,
                 fields: [
-                  {name: 'href', title: 'URL', type: 'url'},
+                  {
+                    name: 'href',
+                    title: 'URL',
+                    type: 'url',
+                    validation: (rule) =>
+                      rule.uri({
+                        scheme: ['http', 'https', 'mailto', 'sms', 'tel', 'webcal'],
+                        allowRelative: true,
+                      }),
+                  },
                   {name: 'blank', type: 'boolean', title: 'Open in new tab'},
                 ],
               },
@@ -35,6 +44,42 @@ export const textBlock = defineType({
                 icon: () => '📄',
                 fields: [
                   {type: 'file', title: 'File', name: 'file'},
+                  {name: 'blank', type: 'boolean', title: 'Open in new tab'},
+                ],
+                validation: (rule) => rule.required(),
+              },
+              {
+                name: 'button',
+                type: 'object',
+                title: 'Button',
+                description:
+                  'Like a link, but looks like a button. Use for important actions. A single page should only have one or two buttons.',
+                icon: () => '🔤',
+                fields: [
+                  {
+                    name: 'href',
+                    title: 'URL',
+                    type: 'url',
+                    validation: (rule) =>
+                      rule.required().uri({
+                        scheme: ['http', 'https', 'mailto', 'sms', 'tel', 'webcal'],
+                        allowRelative: true,
+                      }),
+                  },
+                  {
+                    type: 'string',
+                    title: 'Color',
+                    name: 'color',
+                    options: {
+                      list: [
+                        {title: 'Blue (normal)', value: 'blue'},
+                        {title: 'Green (money- or progress-related)', value: 'green'},
+                        {title: 'Red (use sparingly)', value: 'red'},
+                      ],
+                    },
+                    initialValue: 'blue',
+                    validation: (rule) => rule.required(),
+                  },
                   {name: 'blank', type: 'boolean', title: 'Open in new tab'},
                 ],
               },

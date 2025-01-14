@@ -7,6 +7,7 @@ import { getFileAsset, SanityFileAsset } from "@sanity/asset-utils";
 import { SanityImageObject } from "@sanity/image-url/lib/types/types";
 import Image from "next/image";
 import Link from "next/link";
+import Button from "./button";
 
 export async function PortableTextWithAddons(props: {
   value: PortableTextBlock[];
@@ -18,6 +19,27 @@ export async function PortableTextWithAddons(props: {
       value={props.value}
       components={{
         marks: {
+          button: (props: {
+            children: React.ReactNode;
+            value?: {
+              color: "blue" | "green" | "red";
+              href: string;
+              blank: boolean;
+            };
+          }) => {
+            if (!props.value) {
+              return props.children;
+            }
+
+            return (
+              <Link
+                href={props.value?.href}
+                target={props.value?.blank ? "_blank" : "_self"}
+              >
+                <Button>{props.children}</Button>
+              </Link>
+            );
+          },
           link: (props: {
             children: React.ReactNode;
             value?: {
