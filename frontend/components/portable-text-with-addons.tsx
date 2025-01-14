@@ -32,12 +32,13 @@ export async function PortableTextWithAddons(props: {
             }
 
             return (
-              <Link
+              <Button
                 href={props.value?.href}
                 target={props.value?.blank ? "_blank" : "_self"}
+                design={props.value?.color ?? "blue"}
               >
-                <Button>{props.children}</Button>
-              </Link>
+                {props.children}
+              </Button>
             );
           },
           link: (props: {

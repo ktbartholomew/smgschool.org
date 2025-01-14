@@ -155,4 +155,8 @@ body {
     @apply text-xl;
     @apply md:text-2xl;
   }
+
+  .hero button {
+    @apply py-4;
+  }
 }

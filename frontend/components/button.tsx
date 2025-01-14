@@ -1,7 +1,39 @@
-export default function Button(props: { children: React.ReactNode }) {
+import Link from "next/link";
+
+export default function Button(props: {
+  href: string;
+  target?: string;
+  children: React.ReactNode;
+  design?: "blue" | "green" | "red";
+}) {
+  let colorClasses = "";
+  switch (props.design) {
+    case "green":
+      colorClasses = "bg-green-600 hover:bg-green-500 text-white";
+      break;
+    case "red":
+      colorClasses = "bg-red-500 hover:bg-red-600 text-white";
+      break;
+    case "blue":
+    default:
+      colorClasses = "bg-sky-500 hover:bg-sky-600 text-white";
+      break;
+  }
+
   return (
-    <button className="bg-sky-500 hover:bg-sky-600 text-white transition-colors py-2 px-8 block w-full rounded-md">
-      {props.children}
-    </button>
+    <Link
+      href={props.href}
+      target={props.target ?? "_self"}
+      className="no-underline"
+    >
+      <button
+        className={[
+          colorClasses,
+          " text-white transition-colors py-2 px-8 rounded-md",
+        ].join(" ")}
+      >
+        {props.children}
+      </button>
+    </Link>
   );
 }
