@@ -71,7 +71,9 @@ export default async function ParentResourcesPage() {
                     </span>
                   </header>
                   <PortableTextWithAddons value={n.content.slice(0, 1)} />
-                  <Link href={`/parents/news/${n._id}`}>Read more</Link>
+                  <div className="mt-4">
+                    <Link href={`/parents/news/${n._id}`}>Read more</Link>
+                  </div>
                 </article>
               </div>
             );
