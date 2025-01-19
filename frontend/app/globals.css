@@ -88,12 +88,11 @@ body {
   }
 
   blockquote {
-    @apply text-lg;
-    @apply pl-4;
-    @apply py-4;
+    @apply text-2xl;
+    @apply p-4;
     @apply my-5;
     @apply border-l-8;
-    @apply border-l-slate-300;
+    @apply border-l-brand-primary;
     @apply bg-slate-100;
   }
 

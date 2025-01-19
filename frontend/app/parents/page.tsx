@@ -1,7 +1,13 @@
 "use server";
 
+import Button from "@/components/button";
 import { PortableTextWithAddons } from "@/components/portable-text-with-addons";
-import { PUBLIC_CALENDAR_URL } from "@/lib/calendar";
+import {
+  NEWSLETTER_URL,
+  PUBLIC_CALENDAR_URL,
+  RENWEB_URL,
+  UNIFORMS_URL,
+} from "@/lib/constants";
 import { draftModeClient } from "@/lib/sanity/draft-mode-client";
 import { dateToCentralTime } from "@/lib/time";
 import { PortableTextBlock } from "next-sanity";
@@ -81,11 +87,9 @@ export default async function ParentResourcesPage() {
         </div>
         <div>
           <div className="border border-slate-300 shadow-md rounded-md p-4 md:p-8 mb-8">
-            <a href="https://familyportal.renweb.com/" target="_blank">
-              <button className="bg-sky-500 hover:bg-sky-600 text-white transition-colors py-2 px-8 block w-full rounded-md">
-                Log in to RenWeb
-              </button>
-            </a>
+            <Button className="w-full" href={RENWEB_URL} target="_blank">
+              Log in to RenWeb
+            </Button>
           </div>
 
           <div className="border border-slate-300 shadow-md rounded-md p-4 md:p-8 mb-8">
@@ -98,26 +102,28 @@ export default async function ParentResourcesPage() {
               </p>
             )}
             <ul>
-              {volunteerNeeds.map((v) => {
-                return (
-                  <li key={v._id} className="mb-4">
-                    <div>
-                      <strong>{v.title}</strong>:{" "}
-                      {dateToCentralTime(v.date).toLocaleDateString()}
-                    </div>
-                    {v.shortDescription && (
-                      <div className="text-sm mb-2">{v.shortDescription}</div>
-                    )}
-                    <div>
-                      <a href={v.signupUrl} target="_blank">
-                        <button className="text-sm bg-sky-500 hover:bg-sky-600 text-white transition-colors py-1 px-4 rounded-md">
-                          Sign up
-                        </button>
-                      </a>
-                    </div>
-                  </li>
-                );
-              })}
+              {volunteerNeeds
+                .filter((v, idx) => idx < 5)
+                .map((v) => {
+                  return (
+                    <li key={v._id} className="mb-4">
+                      <div>
+                        <strong>{v.title}</strong>:{" "}
+                        {dateToCentralTime(v.date).toLocaleDateString()}
+                      </div>
+                      {v.shortDescription && (
+                        <div className="text-sm mb-2">{v.shortDescription}</div>
+                      )}
+                      <div>
+                        <a href={v.signupUrl} target="_blank">
+                          <button className="text-sm bg-sky-500 hover:bg-sky-600 text-white transition-colors py-1 px-4 rounded-md">
+                            Sign up
+                          </button>
+                        </a>
+                      </div>
+                    </li>
+                  );
+                })}
             </ul>
           </div>
           <div className="border border-slate-300 shadow-md rounded-md p-4 md:p-8 mb-8">
@@ -125,19 +131,15 @@ export default async function ParentResourcesPage() {
               <h4>Quick Links</h4>
               <ul>
                 <li>
-                  <a href="/">Summer Reading Lists</a>
+                  <Link href={RENWEB_URL} target="_blank">
+                    Log in to RenWeb
+                  </Link>
                 </li>
                 <li>
-                  <a href="/">Buy School Supplies</a>
+                  <Link href={UNIFORMS_URL}>Buy School Uniforms</Link>
                 </li>
                 <li>
-                  <a href="/">Volunteer Needs</a>
-                </li>
-                <li>
-                  <a href="/">Latest Newsletter</a>
-                </li>
-                <li>
-                  <a href="/">Log in to RenWeb</a>
+                  <Link href={NEWSLETTER_URL}>Latest Newsletter</Link>
                 </li>
               </ul>
             </div>

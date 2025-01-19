@@ -4,6 +4,7 @@ export default function Button(props: {
   href: string;
   target?: string;
   children: React.ReactNode;
+  className?: string;
   design?: "blue" | "green" | "red";
 }) {
   let colorClasses = "";
@@ -29,8 +30,11 @@ export default function Button(props: {
       <button
         className={[
           colorClasses,
-          " text-white transition-colors py-2 px-8 rounded-md",
-        ].join(" ")}
+          props.className ?? "",
+          "text-white transition-colors py-2 px-8 rounded-md",
+        ]
+          .filter(Boolean)
+          .join(" ")}
       >
         {props.children}
       </button>

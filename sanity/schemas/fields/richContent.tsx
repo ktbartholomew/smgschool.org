@@ -69,7 +69,7 @@ export const richContent = ({name, description}: {name: string; description?: st
                   type: 'file',
                   title: 'File',
                   name: 'file',
-                  validation: (rule) => rule.required().reference(),
+                  validation: (rule) => rule.required().assetRequired(),
                 },
                 {name: 'blank', type: 'boolean', title: 'Open in new tab'},
               ],
