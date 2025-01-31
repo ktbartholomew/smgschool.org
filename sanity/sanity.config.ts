@@ -6,7 +6,7 @@ import {media} from 'sanity-plugin-media'
 import {defineLocations, presentationTool} from 'sanity/presentation'
 
 const SANITY_STUDIO_PREVIEW_ORIGIN =
-  process.env.SANITY_STUDIO_PREVIEW_ORIGIN || 'https://www.smgschool.org/'
+  process.env.SANITY_STUDIO_PREVIEW_ORIGIN || 'https://smgschool.org/'
 
 const plugins = [
   structureTool(),

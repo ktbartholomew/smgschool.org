@@ -25,6 +25,87 @@ const nextConfig = {
       destination: "https://smgschool-org-yqyo9yvq.sanity.studio/",
       permanent: false,
     },
+    // redirects from old site
+    {
+      source: "/welcome",
+      destination: "/",
+      permanent: true,
+    },
+    {
+      source: "/why-saint-maria-goretti-old",
+      destination: "/about/the-smg-difference",
+      permanent: true,
+    },
+    {
+      source: "/enroll",
+      destination: "/admissions",
+      permanent: true,
+    },
+    {
+      source: "/enroll-1",
+      destination: "/admissions",
+      permanent: true,
+    },
+    {
+      source: "/2024-2025-tuition-rates",
+      destination: "/admissions",
+      permanent: true,
+    },
+    {
+      source: "/admissions-info",
+      destination: "/admissions",
+      permanent: true,
+    },
+    {
+      source: "/schedule-a-tour",
+      destination: "/admissions/tour",
+      permanent: true,
+    },
+    {
+      source: "/our-history",
+      destination: "/about",
+      permanent: true,
+    },
+    {
+      source: "/our-mission-and-vision",
+      destination: "/about/mission",
+      permanent: true,
+    },
+    {
+      source: "/faculty-and-staff",
+      destination: "/about/faculty-and-staff",
+      permanent: true,
+    },
+    {
+      source: "/faculty-and-staff-1",
+      destination: "/about/faculty-and-staff",
+      permanent: true,
+    },
+    {
+      source: "/tuition-rates",
+      destination: "/admissions/tuition",
+      permanent: true,
+    },
+    {
+      source: "/smgcs-experience",
+      destination: "/about/the-smg-difference",
+      permanent: true,
+    },
+    {
+      source: "/2024-2025-school-calendar",
+      destination: "/parents",
+      permanent: true,
+    },
+    {
+      source: "/give-now",
+      destination: "/support-us",
+      permanent: true,
+    },
+    {
+      source: "/give-now",
+      destination: "/support-us",
+      permanent: true,
+    },
   ],
 };
 
