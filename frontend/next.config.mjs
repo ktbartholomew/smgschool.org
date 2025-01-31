@@ -93,7 +93,7 @@ const nextConfig = {
     },
     {
       source: "/2024-2025-school-calendar",
-      destination: "/parents",
+      destination: "/parents/documents",
       permanent: true,
     },
     {
