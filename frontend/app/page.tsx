@@ -19,9 +19,15 @@ export default async function Home() {
     <>
       <TopNavHeader />
       <main className="">
-        <HeroBlock section={page.sections[0]} className="min-h-[80vh]" />
+        <HeroBlock
+          section={page.sections[0]}
+          className="md:min-h-[780px] h-[80vh]"
+        />
         <TwoColumnHeroBlock section={page.sections[1]} />
-        <HeroBlock section={page.sections[2]} className="min-h-[80vh]" />
+        <HeroBlock
+          section={page.sections[2]}
+          className="md:min-h-[780px] h-[80vh]"
+        />
       </main>
       <SiteFooter />
     </>

@@ -8,3 +8,7 @@ export const UNIFORMS_URL =
 
 export const NEWSLETTER_URL =
   "https://secure.smore.com/n/94q2z-the-trojan-times";
+
+export const INSTAGRAM_URL = "https://www.instagram.com/smgcatholicschool";
+
+export const FACEBOOK_URL = "https://www.facebook.com/StMariaGorettiArlington";

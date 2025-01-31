@@ -5,6 +5,9 @@ import Link from "next/link";
 import { TNavLink } from "./main-nav-link";
 import { MainNavList } from "./main-nav-list";
 import { draftModeClient } from "@/lib/sanity/draft-mode-client";
+import { InstagramIcon } from "./instagram";
+import { FACEBOOK_URL, INSTAGRAM_URL } from "@/lib/constants";
+import { FacebookIcon } from "./facebook";
 
 export async function TopNavHeader({ path }: { path?: string }) {
   const urlPath = `/${path ?? ""}`;
@@ -56,6 +59,24 @@ export async function TopNavHeader({ path }: { path?: string }) {
                 </Link>
               </li>
             ))}
+            <li className="m-0">
+              <Link
+                href={INSTAGRAM_URL}
+                target="_blank"
+                className={eyebrowLinkClass}
+              >
+                <InstagramIcon />
+              </Link>
+            </li>
+            <li className="m-0">
+              <Link
+                href={FACEBOOK_URL}
+                target="_blank"
+                className={eyebrowLinkClass}
+              >
+                <FacebookIcon />
+              </Link>
+            </li>
           </ul>
         </nav>
 
