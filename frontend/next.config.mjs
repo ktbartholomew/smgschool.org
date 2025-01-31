@@ -62,6 +62,21 @@ const nextConfig = {
       permanent: true,
     },
     {
+      source: "/inquire-now",
+      destination: "/admissions/tour",
+      permanent: true,
+    },
+    {
+      source: "/visit-us",
+      destination: "/admissions/tour",
+      permanent: true,
+    },
+    {
+      source: "/how-to-apply",
+      destination: "/admissions",
+      permanent: true,
+    },
+    {
       source: "/our-history",
       destination: "/about",
       permanent: true,
@@ -94,6 +109,36 @@ const nextConfig = {
     {
       source: "/2024-2025-school-calendar",
       destination: "/parents/documents",
+      permanent: true,
+    },
+    {
+      source: "/lunchinformation",
+      destination: "/parents/lunch",
+      permanent: true,
+    },
+    {
+      source: "/news-events",
+      destination: "/parents",
+      permanent: true,
+    },
+    {
+      source: "/news",
+      destination: "/parents",
+      permanent: true,
+    },
+    {
+      source: "/newsRSS",
+      destination: "/parents",
+      permanent: true,
+    },
+    {
+      source: "/academics",
+      destination: "/values/curriculum",
+      permanent: true,
+    },
+    {
+      source: "/academics",
+      destination: "/values/curriculum",
       permanent: true,
     },
     {
