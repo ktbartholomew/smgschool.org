@@ -104,8 +104,8 @@ async function getPage(props: PageProps) {
     }
   }
 }`,
-    {},
-    { next: { revalidate: 60 } }
+    {}
+    // { next: { revalidate: 60 } }
   );
 
   if (pages.length === 0) {

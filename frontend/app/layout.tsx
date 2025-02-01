@@ -4,31 +4,14 @@ import "./globals.css";
 import { VisualEditing } from "next-sanity";
 import { draftMode } from "next/headers";
 import { DisableDraftMode } from "@/components/disable-draft-mode";
+import { GoogleTagManager } from "@/components/google-tag-manager";
+import { GOOGLE_TAG_MANAGER_ID } from "@/lib/constants";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Saint Maria Goretti Catholic School",
   description: "Saint Maria Goretti Catholic School",
-};
-
-const Ga = (props: { gaId: string }) => {
-  const script = `
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', '${props.gaId}', {debug_mode: true});
-  `;
-
-  return (
-    <>
-      <script
-        async
-        src={`https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(props.gaId)}`}
-      ></script>
-      <script dangerouslySetInnerHTML={{ __html: script }}></script>
-    </>
-  );
 };
 
 export default function RootLayout({
@@ -42,7 +25,7 @@ export default function RootLayout({
         {children}
         {draftMode().isEnabled && <DisableDraftMode />}
         {draftMode().isEnabled && <VisualEditing />}
-        <Ga gaId="G-WW9E92XGYR" />
+        <GoogleTagManager gaId={GOOGLE_TAG_MANAGER_ID} />
       </body>
     </html>
   );
