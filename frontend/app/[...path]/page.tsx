@@ -104,8 +104,8 @@ async function getPage(props: PageProps) {
     }
   }
 }`,
-    {},
-    { next: { revalidate: 60 } }
+    {}
+    // { next: { revalidate: 60 } }
   );
 
   if (pages.length === 0) {
@@ -115,15 +115,15 @@ async function getPage(props: PageProps) {
   return pages[0];
 }
 
-export async function generateStaticParams(): Promise<{ path: string[] }[]> {
-  const pages = await client.fetch<{ slug: { current: string } }[]>(
-    `*[_type == 'page']{slug}`
-  );
+// export async function generateStaticParams(): Promise<{ path: string[] }[]> {
+//   const pages = await client.fetch<{ slug: { current: string } }[]>(
+//     `*[_type == 'page']{slug}`
+//   );
 
-  return pages.map((p) => ({
-    path: p.slug.current.split("/").filter(Boolean),
-  }));
-}
+//   return pages.map((p) => ({
+//     path: p.slug.current.split("/").filter(Boolean),
+//   }));
+// }
 
 export async function generateMetadata(props: PageProps) {
   const page = await getPage(props);
