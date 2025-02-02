@@ -2,30 +2,20 @@
 
 import { StickyLogo } from "./sticky-logo";
 import Link from "next/link";
-import { TNavLink } from "./main-nav-link";
+import { TEyebrowLink, TNavLink } from "./main-nav-link";
 import { MainNavList } from "./main-nav-list";
 import { draftModeClient } from "@/lib/sanity/draft-mode-client";
-import { InstagramIcon } from "./instagram";
-import { FACEBOOK_URL, INSTAGRAM_URL } from "@/lib/constants";
-import { FacebookIcon } from "./facebook";
+
+const secondaryLinkClass =
+  "px-6 py-2 block text-white no-underline hover:bg-brand-primary transition-colors";
 
 export async function TopNavHeader({ path }: { path?: string }) {
   const urlPath = `/${path ?? ""}`;
 
-  const eyebrowLinkClass =
-    "px-6 py-2 block text-white no-underline hover:bg-brand-primary transition-colors";
-
   const [eyebrowNavLinks, mainNavLinks] = await Promise.all([
-    draftModeClient().fetch<
-      {
-        _id: string;
-        _createdAt: string;
-        _updatedAt: string;
-        text: string;
-        url: string;
-        newTab: boolean;
-      }[]
-    >(`*[_type == 'eyebrowNavLink' ] | order(order asc)`),
+    draftModeClient().fetch<TEyebrowLink[]>(
+      `*[_type == 'eyebrowNavLink' ] | order(order asc)`
+    ),
     draftModeClient().fetch<TNavLink[]>(
       `*[_type == 'mainNavLink' ]{
       ..., 
@@ -46,64 +36,30 @@ export async function TopNavHeader({ path }: { path?: string }) {
     <>
       <StickyLogo />
       <header>
-        <nav className="hidden md:flex bg-brand-primary-700 text-white text-sm md:px-16">
-          <ul className="flex items-center list-none m-0">
-            {eyebrowNavLinks.map((l) => (
-              <li key={l._id} className="m-0">
-                <Link
-                  className={eyebrowLinkClass}
-                  href={l.url}
-                  target={l.newTab ? "_blank" : "_self"}
-                >
-                  {l.text}
-                </Link>
-              </li>
-            ))}
-            <li className="m-0">
-              <Link
-                href={INSTAGRAM_URL}
-                target="_blank"
-                className={eyebrowLinkClass}
-              >
-                <InstagramIcon />
-              </Link>
-            </li>
-            <li className="m-0">
-              <Link
-                href={FACEBOOK_URL}
-                target="_blank"
-                className={eyebrowLinkClass}
-              >
-                <FacebookIcon />
-              </Link>
-            </li>
-          </ul>
-        </nav>
-
-        <MainNavList links={mainNavLinks} />
+        <MainNavList eyebrowLinks={eyebrowNavLinks} links={mainNavLinks} />
         {urlPath.startsWith("/parents") && (
           <div className="bg-brand-primary-700 text-white text-sm md:px-16 overflow-x-auto">
             <ul className="m-0 p-0 list-none flex whitespace-nowrap">
               <li>
-                <Link href="/parents/documents" className={eyebrowLinkClass}>
+                <Link href="/parents/documents" className={secondaryLinkClass}>
                   Documents
                 </Link>
               </li>
               <li>
-                <Link href="/parents/lunch" className={eyebrowLinkClass}>
+                <Link href="/parents/lunch" className={secondaryLinkClass}>
                   Lunch
                 </Link>
               </li>
               <li>
                 <Link
                   href="/parents/athletics-clubs"
-                  className={eyebrowLinkClass}
+                  className={secondaryLinkClass}
                 >
                   Sports &amp; Clubs
                 </Link>
               </li>
               <li>
-                <Link href="/parents/volunteer" className={eyebrowLinkClass}>
+                <Link href="/parents/volunteer" className={secondaryLinkClass}>
                   Volunteer
                 </Link>
               </li>

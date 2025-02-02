@@ -2,19 +2,62 @@
 
 import { SmgSchoolLogo } from "./logo";
 import Link from "next/link";
-import { MainNavLink, TNavLink } from "./main-nav-link";
+import { MainNavLink, TEyebrowLink, TNavLink } from "./main-nav-link";
 import HamburgerIcon from "./hamburger-icon";
 import { useEffect, useState } from "react";
+import { FACEBOOK_URL, INSTAGRAM_URL } from "@/lib/constants";
+import { InstagramIcon } from "./instagram";
+import { FacebookIcon } from "./facebook";
 
-export function MainNavList(props: { urlPath?: string; links: TNavLink[] }) {
+export function MainNavList(props: {
+  urlPath?: string;
+  eyebrowLinks: TEyebrowLink[];
+  links: TNavLink[];
+}) {
   const [show, setShow] = useState(false);
 
   useEffect(() => {
     setShow(false);
   }, [props.urlPath]);
 
+  const eyebrowLinkClass =
+    "px-6 py-2 block text-white no-underline hover:bg-brand-primary transition-colors";
+
   return (
     <>
+      <nav className="hidden md:flex bg-brand-primary-700 text-white text-sm md:px-16">
+        <ul className="flex items-center list-none m-0">
+          {props.eyebrowLinks.map((l) => (
+            <li key={l._id} className="m-0">
+              <Link
+                className={eyebrowLinkClass}
+                href={l.url}
+                target={l.newTab ? "_blank" : "_self"}
+              >
+                {l.text}
+              </Link>
+            </li>
+          ))}
+          <li className="m-0">
+            <Link
+              href={INSTAGRAM_URL}
+              target="_blank"
+              className={eyebrowLinkClass}
+            >
+              <InstagramIcon />
+            </Link>
+          </li>
+          <li className="m-0">
+            <Link
+              href={FACEBOOK_URL}
+              target="_blank"
+              className={eyebrowLinkClass}
+            >
+              <FacebookIcon />
+            </Link>
+          </li>
+        </ul>
+      </nav>
       <nav className="flex items-stretch justify-between md:justify-between bg-brand-primary text-white md:px-16">
         <button
           className="md:hidden text-3xl p-4"
@@ -47,6 +90,38 @@ export function MainNavList(props: { urlPath?: string; links: TNavLink[] }) {
           >
             <HamburgerIcon />
           </button>
+          <ul className="md:hidden bg-brand-primary-700 text-base list-none m-0">
+            {props.eyebrowLinks.map((l) => (
+              <li key={l._id} className="m-0">
+                <Link
+                  className={eyebrowLinkClass}
+                  href={l.url}
+                  target={l.newTab ? "_blank" : "_self"}
+                >
+                  {l.text}
+                </Link>
+              </li>
+            ))}
+            <li className="m-0">
+              <Link
+                href={INSTAGRAM_URL}
+                target="_blank"
+                className={eyebrowLinkClass}
+              >
+                <InstagramIcon />
+              </Link>
+            </li>
+            <li className="m-0">
+              <Link
+                href={FACEBOOK_URL}
+                target="_blank"
+                className={eyebrowLinkClass}
+              >
+                <FacebookIcon />
+              </Link>
+            </li>
+          </ul>
+
           <ul className="md:flex items-stretch text-xl md:text-lg ml-4 md:ml-0 md:px-4 list-none m-0 pb-24 md:pb-0">
             {props.links.map((m) => {
               return (

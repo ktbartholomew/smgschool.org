@@ -6,6 +6,15 @@ import "./main-nav-link.css";
 const mainLinkClass =
   "flex relative items-center md:px-6 transition-colors h-full text-white no-underline md:hover:bg-brand-primary-600";
 
+export type TEyebrowLink = {
+  _id: string;
+  _createdAt: string;
+  _updatedAt: string;
+  text: string;
+  url: string;
+  newTab: boolean;
+};
+
 export type TNavLink = {
   _id: string;
   title?: string;
