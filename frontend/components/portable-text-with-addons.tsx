@@ -8,6 +8,7 @@ import { SanityImageObject } from "@sanity/image-url/lib/types/types";
 import Image from "next/image";
 import Link from "next/link";
 import Button from "./button";
+import { AnchoredHeading } from "@/components/anchored-heading";
 
 export async function PortableTextWithAddons(props: {
   value: PortableTextBlock[];
@@ -84,6 +85,26 @@ export async function PortableTextWithAddons(props: {
               </Link>
             );
           },
+        },
+        block: {
+          h1: (props) => (
+            <AnchoredHeading style={props.value.style} {...props} />
+          ),
+          h2: (props) => (
+            <AnchoredHeading style={props.value.style} {...props} />
+          ),
+          h3: (props) => (
+            <AnchoredHeading style={props.value.style} {...props} />
+          ),
+          h4: (props) => (
+            <AnchoredHeading style={props.value.style} {...props} />
+          ),
+          h5: (props) => (
+            <AnchoredHeading style={props.value.style} {...props} />
+          ),
+          h6: (props) => (
+            <AnchoredHeading style={props.value.style} {...props} />
+          ),
         },
         types: {
           image: (image: {

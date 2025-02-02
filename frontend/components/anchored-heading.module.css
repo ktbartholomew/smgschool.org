@@ -1,0 +1,8 @@
+.anchoredHeading .anchorLink {
+  opacity: 0;
+  will-change: opacity;
+}
+
+.anchoredHeading:hover .anchorLink {
+  opacity: 1;
+}
