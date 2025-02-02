@@ -9,7 +9,7 @@ export const UNIFORMS_URL =
   "https://flynnohara.com/shop/st-maria-goretti-catholic-school-tx202/";
 
 export const NEWSLETTER_URL =
-  "https://secure.smore.com/n/94q2z-the-trojan-times";
+  "https://secure.smore.com/n/d5zp1-the-trojan-times";
 
 export const INSTAGRAM_URL = "https://www.instagram.com/smgcatholicschool";
 
