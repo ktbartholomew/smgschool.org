@@ -11,7 +11,6 @@ export const client = createClient({
       revalidate: 600,
     },
   },
-  token: process.env.SANITY_VIEWER_TOKEN,
   stega: {
     studioUrl:
       process.env.NEXT_PUBLIC_SANITY_STUDIO_URL ?? "http://localhost:3333",
