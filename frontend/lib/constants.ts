@@ -8,8 +8,7 @@ export const RENWEB_URL = "https://familyportal.renweb.com/";
 export const UNIFORMS_URL =
   "https://flynnohara.com/shop/st-maria-goretti-catholic-school-tx202/";
 
-export const NEWSLETTER_URL =
-  "https://secure.smore.com/n/d5zp1-the-trojan-times";
+export const NEWSLETTER_URL = "/newsletter/latest";
 
 export const INSTAGRAM_URL = "https://www.instagram.com/smgcatholicschool";
 
