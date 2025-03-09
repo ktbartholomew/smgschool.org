@@ -15,7 +15,12 @@ export const formEmbedBlock = defineType({
       type: 'string',
       name: 'url',
       title: 'URL',
-      validation: (rule) => rule.required() && rule.regex(/^https:\/\/forms\.office\.com\/.+?$/),
+      validation: (rule) =>
+        rule.required() &&
+        rule.regex(
+          /^https:\/\/(forms\.office\.com\/|docs\.google\.com\/forms).+?$/,
+          'forms.office.com or docs.google.com',
+        ),
       description: (
         <>
           A URL like <code>https://forms.office.com/Pages/ResponsePage.aspx?id=...</code>. Office

@@ -7,7 +7,7 @@ export async function GET() {
   const { url } = await draftModeClient().fetch(
     `*[
        _type == "newsletter" &&
-       dateTime(date) <= dateTime(now())
+       dateTime(date) <= dateTime("${new Date().toISOString()}")
      ] | order(date desc)[0]{url}`
   );
 
