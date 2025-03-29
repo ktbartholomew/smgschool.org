@@ -23,9 +23,13 @@ export default async function Home() {
           section={page.sections[0]}
           className="md:min-h-[780px] h-[80vh]"
         />
-        <TwoColumnHeroBlock section={page.sections[1]} />
         <HeroBlock
-          section={page.sections[2]}
+          section={page.sections[1]}
+          className="md:min-h-[780px] h-[80vh]"
+        />
+        <TwoColumnHeroBlock section={page.sections[2]} />
+        <HeroBlock
+          section={page.sections[3]}
           className="md:min-h-[780px] h-[80vh]"
         />
       </main>
