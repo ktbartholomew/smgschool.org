@@ -8,77 +8,13 @@ import PersonListBlock from "@/components/blocks/person-list-block";
 import TextBlock from "@/components/blocks/text-block";
 import SiteFooter from "@/components/site-footer";
 import { TopNavHeader } from "@/components/site-header";
-import { client } from "@/sanity";
-import { PortableText, PortableTextBlock } from "@portabletext/react";
-import {
-  SanityImageObject,
-  SanityImageSource,
-} from "@sanity/image-url/lib/types/types";
 import { notFound } from "next/navigation";
 import { metadata } from "@/app/layout";
 import TwoColumnTextBlock from "@/components/blocks/two-column-text-block";
 import TwoColumnHeroBlock from "@/components/blocks/two-column-hero-block";
 import { draftModeClient } from "@/lib/sanity/draft-mode-client";
 import { PortableTextWithAddons } from "@/components/portable-text-with-addons";
-
-type Page = {
-  _id: string;
-  title: string;
-  sections: (
-    | {
-        _type: "twoColumnHeroBlock";
-        _key: string;
-        title?: string;
-        column1: PortableTextBlock[];
-        column2: PortableTextBlock[];
-      }
-    | {
-        _type: "twoColumnTextBlock";
-        _key: string;
-        title?: string;
-        column1: PortableTextBlock[];
-        column2: PortableTextBlock[];
-      }
-    | {
-        _type: "textBlock";
-        _key: string;
-        title?: string;
-        content: PortableTextBlock[];
-      }
-    | {
-        _type: "heroBlock";
-        _key: string;
-        title?: string;
-        image?: SanityImageSource & SanityImageObject;
-      }
-    | {
-        _type: "donationBlock";
-        _key: string;
-        title?: string;
-        content: PortableTextBlock[];
-        paymentLinkUrl: string;
-      }
-    | {
-        _type: "formEmbedBlock";
-        _key: string;
-        title?: string;
-        url: string;
-      }
-    | {
-        _type: "personListBlock";
-        _key: string;
-        title: string;
-      }
-  )[];
-  sidebarSections?: {
-    _type: "textBlock";
-    _key: string;
-    title?: string;
-    content: PortableTextBlock[];
-  }[];
-  seoTitle?: string;
-  seoDescription?: string;
-};
+import { Page } from "@/lib/page";
 
 async function getPage(props: PageProps) {
   const pages = await draftModeClient().fetch<Page[]>(
@@ -105,7 +41,7 @@ async function getPage(props: PageProps) {
   }
 }`,
     {}
-    // { next: { revalidate: 60 } }
+    // { next: { revalidate: 600 } }
   );
 
   if (pages.length === 0) {

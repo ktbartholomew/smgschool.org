@@ -28,7 +28,7 @@ export async function TopNavHeader({ path }: { path?: string }) {
       }
     } | order(order asc)`,
       {},
-      { next: { revalidate: 60 } }
+      { next: { revalidate: 600 } }
     ),
   ]);
 
