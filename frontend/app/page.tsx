@@ -13,7 +13,7 @@ export default async function Home() {
     await draftModeClient().fetch<Page[]>(
       `*[_type == 'page' && slug.current == '/_home']`,
       {},
-      { next: { revalidate: 60 } }
+      { next: { revalidate: 600 } }
     )
   )[0];
 

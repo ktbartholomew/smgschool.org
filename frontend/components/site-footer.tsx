@@ -44,7 +44,7 @@ export default async function SiteFooter() {
       }
     } | order(order asc)`,
       {},
-      { next: { revalidate: 60 } }
+      { next: { revalidate: 600 } }
     ),
   ]);
 
