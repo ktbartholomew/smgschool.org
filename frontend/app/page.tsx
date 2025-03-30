@@ -28,12 +28,16 @@ export default async function Home() {
                 <HeroBlock
                   section={section}
                   key={section._key}
-                  className="md:min-h-[780px] h-[80vh]"
+                  className="md:min-h-[780px] min-h-[80vh]"
                 />
               );
             case "twoColumnHeroBlock":
               return (
-                <TwoColumnHeroBlock section={section} key={section._key} />
+                <TwoColumnHeroBlock
+                  className="md:min-h-[780px] min-h-[80vh]"
+                  section={section}
+                  key={section._key}
+                />
               );
             case "donationBlock":
               return (
