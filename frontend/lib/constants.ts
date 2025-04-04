@@ -13,3 +13,5 @@ export const NEWSLETTER_URL = "/newsletter/latest";
 export const INSTAGRAM_URL = "https://www.instagram.com/smgcatholicschool";
 
 export const FACEBOOK_URL = "https://www.facebook.com/StMariaGorettiArlington";
+
+export const LUNCH_MENU_URL = "https://laislatx.com/#bs-11";

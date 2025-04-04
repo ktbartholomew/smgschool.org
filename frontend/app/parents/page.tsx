@@ -3,6 +3,7 @@
 import Button from "@/components/button";
 import { PortableTextWithAddons } from "@/components/portable-text-with-addons";
 import {
+  LUNCH_MENU_URL,
   NEWSLETTER_URL,
   PUBLIC_CALENDAR_URL,
   RENWEB_URL,
@@ -136,6 +137,9 @@ export default async function ParentResourcesPage() {
                   <Link href={RENWEB_URL} target="_blank">
                     Log in to RenWeb
                   </Link>
+                </li>
+                <li>
+                  <Link href={LUNCH_MENU_URL}>Lunch Menu</Link>
                 </li>
                 <li>
                   <Link href={UNIFORMS_URL}>Buy School Uniforms</Link>
