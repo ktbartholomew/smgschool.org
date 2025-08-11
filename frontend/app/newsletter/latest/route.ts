@@ -1,5 +1,3 @@
-"use server";
-
 import { draftModeClient } from "@/lib/sanity/draft-mode-client";
 import { redirect } from "next/navigation";
 
