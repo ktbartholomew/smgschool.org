@@ -10,19 +10,6 @@ const nextConfig = {
         },
       ],
     },
-    {
-      source: "/newsletter/latest",
-      headers: [
-        {
-          key: "Vercel-CDN-Cache-Control",
-          value: "s-maxage=1",
-        },
-        {
-          key: "Cache-Control",
-          value: "s-maxage=1",
-        },
-      ],
-    },
   ],
   images: {
     remotePatterns: [
