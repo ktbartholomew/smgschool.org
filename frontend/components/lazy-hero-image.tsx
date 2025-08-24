@@ -20,7 +20,7 @@ export function LazyHeroImage(props: {
   }, [props.imageUrl]);
 
   return (
-    <>
+    <div className="relative md:absolute h-[66vw] md:h-full w-full">
       {/* The full-size image */}
 
       <div
@@ -60,6 +60,6 @@ export function LazyHeroImage(props: {
           }}
         ></div>
       ) : null}
-    </>
+    </div>
   );
 }

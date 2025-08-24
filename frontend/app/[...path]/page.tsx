@@ -90,7 +90,7 @@ export default async function DynamicPage(props: PageProps) {
       <TopNavHeader path={props.params.path} />
       {heroHeader && (
         <header>
-          <HeroBlock section={heroHeader} className="h-[50vh]" />
+          <HeroBlock section={heroHeader} className="md:h-[50vh]" />
         </header>
       )}
       <div className="flex flex-wrap justify-center">
@@ -105,7 +105,7 @@ export default async function DynamicPage(props: PageProps) {
             switch (s._type) {
               case "heroBlock":
                 return (
-                  <HeroBlock key={s._key} section={s} className="h-[50vh]" />
+                  <HeroBlock key={s._key} section={s} className="md:h-[50vh]" />
                 );
               case "textBlock":
                 return <TextBlock key={s._key} section={s} />;

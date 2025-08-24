@@ -19,7 +19,7 @@ export default async function TwoColumnHeroBlock(props: {
 
   return (
     <section className={`prose hero ${props.className ? props.className : ""}`}>
-      <div className="grid md:grid-cols-2 items-stretch">
+      <div className="grid md:grid-cols-2 items-center">
         <div className={onlyImageColumn1 ? "" : proseColumnClasses}>
           <PortableTextWithAddons value={props.section.column1} />
         </div>

@@ -60,7 +60,7 @@ export default async function HeroBlock(props: {
 
       {/* Slideshow */}
       {props.section.images ? (
-        <div className="absolute h-full w-full">
+        <div className="relative md:absolute h-[66vw] md:h-full w-full">
           <Slideshow images={props.section.images} />
         </div>
       ) : null}
@@ -70,24 +70,28 @@ export default async function HeroBlock(props: {
         <LazyHeroImage imageUrl={""} />
       ) : null}
       <div
-        className={`absolute h-full w-full ${colorOverlayClass} mix-blend-multiply`}
+        className={`hidden md:block md:absolute h-full w-full ${colorOverlayClass} mix-blend-multiply`}
       ></div>
-      <div className="absolute h-full w-full flex flex-col items-center content-center gap-8 px-4 md:px-16 justify-center">
-        <h1 className="font-black text-center text-white tracking-tight text-5xl md:text-8xl text-balance drop-shadow-lg-strong z-20">
+      <div className="bg-brand-primary md:bg-transparent md:absolute h-full w-full flex flex-col items-center content-center gap-4 md:gap-8 p-4 md:p-16 justify-center md:justify-end">
+        <h1 className="font-black text-center text-white tracking-tight text-5xl md:text-7xl m-0 text-balance drop-shadow-lg-strong z-20">
           {props.section.title}
         </h1>
-        <div className="text-center text-white text-2xl md:text-3xl text-balance max-w-prose -mt-12 mb-8">
-          {props.section.subtitle}
-        </div>
-        <div>
-          {props.section.cta?.map((cta) => (
-            <a key={cta._key} href={cta.link}>
-              <button className="text-2xl bg-brand-primary text-white shadow-lg px-8 py-4 rounded-md">
-                {cta.label}
-              </button>
-            </a>
-          ))}
-        </div>
+        {props.section.subtitle && (
+          <div className="text-center text-white text-2xl md:text-3xl text-balance max-w-prose mb-8">
+            {props.section.subtitle}
+          </div>
+        )}
+        {props.section.cta && (
+          <div>
+            {props.section.cta?.map((cta) => (
+              <a key={cta._key} href={cta.link}>
+                <button className="text-2xl bg-white text-brand-primary-700 text-balance md:bg-brand-primary md:text-white shadow-lg px-8 py-4 rounded-md">
+                  {cta.label}
+                </button>
+              </a>
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );
