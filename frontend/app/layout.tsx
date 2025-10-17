@@ -4,7 +4,7 @@ import "./globals.css";
 import { VisualEditing } from "next-sanity";
 import { draftMode } from "next/headers";
 import { DisableDraftMode } from "@/components/disable-draft-mode";
-import { GoogleTagManager } from "@/components/google-tag-manager";
+import { GoogleTagManager } from "@next/third-parties/google";
 import { GOOGLE_TAG_MANAGER_ID } from "@/lib/constants";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -25,7 +25,7 @@ export default function RootLayout({
         {children}
         {draftMode().isEnabled && <DisableDraftMode />}
         {draftMode().isEnabled && <VisualEditing />}
-        <GoogleTagManager gaId={GOOGLE_TAG_MANAGER_ID} />
+        <GoogleTagManager gtmId={GOOGLE_TAG_MANAGER_ID} />
       </body>
     </html>
   );
